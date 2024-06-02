@@ -35,7 +35,6 @@ const validarDatos = () => {
 
         if (username == element.username && password === element.password) {
           
-          
           if(selectedRole !== element.role){
             alert("Rol incorrecto")
             return
