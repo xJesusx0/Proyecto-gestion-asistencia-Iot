@@ -25,12 +25,21 @@
 
     <div class="card">
         <h2>Iniciar sesion</h2>
-        <div class="form-container">
+        <form class="form-container">
             <form>
                 <input class="input-group" type="text" placeholder="Username" id="username" autocomplete="off" required>
                 <input class="input-group" type="password" placeholder="Password" id="password" autocomplete="off" required>
-               
+                
+                <div class="radio-container">
+                    <input type="radio" name="role" value="estudiante" id="student"> Estudiante <br>
+                    <input type="radio" name="role" value="profesor" id="teacher"> Profesor <br>
+                    <input type="radio" name="role" value="administrador" id="admin"> Administrador <br>
+                </div>
+                
+
                 <input type="button" class="submit-button" value="Iniciar sesion" onclick="validarDatos()">            </form>
+           
+            </form>  
         </div>
     </div>
 
