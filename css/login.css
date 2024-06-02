@@ -47,3 +47,7 @@
 .submit-button{
     width: 50%;
 }
+
+.radio-container{
+    display: flex;
+}
