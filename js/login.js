@@ -12,24 +12,34 @@ const validarDatos = () => {
       const password = document.getElementById("password").value
       const selectedRole = document.querySelector('input[name="role"]:checked').value
 
+      const rutas = {
+        'estudiante':'students.html',
+        'profesor':'teachers.html',
+        'administrador':'administratos.html'
+      }
+
+      /*
       console.log(username)
       console.log(password)
       console.log(selectedRole)
 
+      console.log(data)
+      */
       for (let i = 0; i < data.length; i++) {
         let element = data[i];
-        console.log(data)
+        /*
         console.log(`username: ${element.username}`)
         console.log(`password: ${element.password}`)
         console.log(`role: ${element.role}`)
+        */
 
-        if (username === element.username && password === element.password) {
+        if (username == element.username && password === element.password) {
+          
           
           if(selectedRole !== element.role){
             alert("Rol incorrecto")
             return
           }
-
           alert("Bienvenido")
 
 
@@ -37,12 +47,12 @@ const validarDatos = () => {
           localStorage.setItem('username',username)
           localStorage.setItem('role',selectedRole)
 
-          window.location.href = '../index.html'
+          window.location.href = rutas[selectedRole]
           return
         }
       }
 
-      alert("username invalido")
+      alert("usuario o contraseña invalido")
 
     })
     .catch(error => {
