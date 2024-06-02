@@ -1,5 +1,5 @@
 const validarDatos = () => {
-  fetch('json/datos_roles.json')
+  fetch('../json/users_data.json')
     .then(response => {
       if (!response.ok) {
         throw new Error('No se pudo leer el archivo JSON')
@@ -37,7 +37,7 @@ const validarDatos = () => {
           localStorage.setItem('username',username)
           localStorage.setItem('role',selectedRole)
 
-          window.location.href = 'html/index.html'
+          window.location.href = '../index.html'
           return
         }
       }
