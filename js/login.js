@@ -11,13 +11,6 @@ const validarDatos = () => {
       const username = document.getElementById("username").value
       const password = document.getElementById("password").value
       const selectedRole = document.querySelector('input[name="role"]:checked').value
-
-      const rutas = {
-        'estudiante':'students.html',
-        'profesor':'teachers.html',
-        'administrador':'administratos.html'
-      }
-
       /*
       console.log(username)
       console.log(password)
@@ -46,7 +39,7 @@ const validarDatos = () => {
           localStorage.setItem('username',username)
           localStorage.setItem('role',selectedRole)
 
-          window.location.href = rutas[selectedRole]
+          window.location.href = window.routes[selectedRole]
           return
         }
       }
