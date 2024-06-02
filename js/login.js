@@ -1,5 +1,5 @@
 const validarDatos = () => {
-  fetch('json/datos.json')
+  fetch('../json/users_data.json')
     .then(response => {
       if (!response.ok) {
         throw new Error('No se pudo leer el archivo JSON')
@@ -8,30 +8,43 @@ const validarDatos = () => {
     })
 
     .then(data => {
-      username = document.getElementById("username").value
-      password = document.getElementById("password").value
-
+      const username = document.getElementById("username").value
+      const password = document.getElementById("password").value
+      const selectedRole = document.querySelector('input[name="role"]:checked').value
+      /*
       console.log(username)
       console.log(password)
+      console.log(selectedRole)
 
+      console.log(data)
+      */
       for (let i = 0; i < data.length; i++) {
         let element = data[i];
-
-        console.log(`Nombre: ${element.username}`)
+        /*
+        console.log(`username: ${element.username}`)
         console.log(`password: ${element.password}`)
+        console.log(`role: ${element.role}`)
+        */
 
-        if (username === element.username && password === element.password) {
-          alert("Usuario valido")
+        if (username == element.username && password === element.password) {
           
+          if(selectedRole !== element.role){
+            alert("Rol incorrecto")
+            return
+          }
+          alert("Bienvenido")
+
+
           localStorage.setItem('loggedIn', 'true')
           localStorage.setItem('username',username)
+          localStorage.setItem('role',selectedRole)
 
-          window.location.href = 'html/index.html'
+          window.location.href = window.routes[selectedRole]
           return
         }
       }
 
-      alert("username invalido")
+      alert("usuario o contraseña invalido")
 
     })
     .catch(error => {
