@@ -1,5 +1,5 @@
 const validarDatos = () => {
-  fetch('json/datos.json')
+  fetch('json/datos_roles.json')
     .then(response => {
       if (!response.ok) {
         throw new Error('No se pudo leer el archivo JSON')
