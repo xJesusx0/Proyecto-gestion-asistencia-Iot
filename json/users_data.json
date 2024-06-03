@@ -3,19 +3,22 @@
       "username": "jesus",
       "password": "1234",
       "role": "estudiante",
-      "program" : "Ingeniera Telematica"
+      "program" : "Ingeniera Telematica",
+      "period" : 4
     },
     {
       "username": "daniel",
       "password": "12345",
       "role": "estudiante",
-      "program" : "Ingeniera Telematica"
+      "program" : "Ingeniera Telematica",
+      "period" : 4
     },
     {
       "username": "alberto",
       "password": "123456",
       "role": "estudiante",
-      "program" : "Ingeniera Telematica"
+      "program" : "Ingeniera Telematica",
+      "period" : 4
     },
     {
       "username": "brayan",
