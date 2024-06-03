@@ -14,7 +14,9 @@
                 "course": "Proyecto integrador",
                 "fails": 0
             }
-        ]
+        ],
+        "program" : "Ingeniera Telematica",
+        "period" : 4
     },
     {
         "name": "daniel",
@@ -31,7 +33,9 @@
                 "course": "Proyecto integrador",
                 "fails": 1
             }
-        ]
+        ],
+        "program" : "Ingeniera Telematica",
+        "period" : 4
     },
     {
         "name": "alberto",
@@ -48,6 +52,8 @@
                 "course": "Proyecto integrador",
                 "fails": 2
             }
-        ]
+        ],
+        "program" : "Ingeniera Telematica",
+        "period" : 4
     }
 ]
