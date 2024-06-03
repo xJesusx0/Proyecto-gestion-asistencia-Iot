@@ -25,6 +25,7 @@ nav{
 }
 #welcomeData{
     margin: 0;
+    text-align: end;
 }
 .containerWelcomeData{
     display: flex;
