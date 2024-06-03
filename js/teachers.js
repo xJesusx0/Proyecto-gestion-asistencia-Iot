@@ -23,34 +23,42 @@ fetch('../json/teachers.json')
     document.getElementById('welcomeUser').innerHTML += ` ${teacher['name']} 🌟`
 
     console.log(teacher)
-    const coursesContainer = document.getElementById('coursesContainer')
-      teacher.courses.forEach(course => {
-        
-        const courseElement = document.createElement('div')
-        courseElement.classList.add('card')
+    const coursesContainer = document.getElementById('pCards');
 
-        const image = document.createElement('img')
+    teacher.courses.forEach(course => {
+      // Crear el elemento div con la clase 'card'
+      const courseElement = document.createElement('div');
+      courseElement.classList.add('card');
 
-        image.classList.add('card-img-top')
-        image.setAttribute('src',"../img/textura.jpg")
-        courseElement.appendChild(image);
+      // Crear la imagen con la clase 'card-img-top' y establecer el atributo src
+      const image = document.createElement('img');
+      image.classList.add('card-img-top');
+      image.setAttribute('src', '../img/textura.jpg');
+      image.setAttribute('alt', 'Fondo Carta');
+      courseElement.appendChild(image);
 
-        const courseTitle = document.createElement('h3')
-        
-        courseTitle.classList.add('courseTitle')
-        courseTitle.innerHTML = `Materia: ${course.course}`
-        courseElement.appendChild(courseTitle);
+      // Crear el div con la clase 'card-body'
+      const cardBody = document.createElement('div');
+      cardBody.classList.add('card-body');
+      courseElement.appendChild(cardBody);
 
-        const studentsList = document.createElement('input')
-        
-        studentsList.classList.add('studentsList')
-        studentsList.setAttribute('type','button')
-        studentsList.setAttribute('value','Ver lista de estudiantes')
-        studentsList.setAttribute('onclick', `mostrarModal(${JSON.stringify(course.students)})`);
-        
-        courseElement.appendChild(studentsList);
-        coursesContainer.appendChild(courseElement);
-      })
+      // Crear el título h5 con la clase 'card-title' y establecer el texto
+      const courseTitle = document.createElement('h5');
+      courseTitle.classList.add('card-title');
+      courseTitle.textContent = course.course;
+      cardBody.appendChild(courseTitle);
+
+      // Crear el botón con la clase 'btnCard' y establecer el texto
+      const button = document.createElement('button');
+      button.classList.add('btnCard');
+      button.textContent = 'Ver lista de estudiantes';
+      button.setAttribute('onclick', `mostrarModal(${JSON.stringify(course.students)})`);
+      cardBody.appendChild(button);
+
+      // Agregar el div del curso al contenedor de cursos
+      coursesContainer.appendChild(courseElement);
+    });
+
   })
 
 
