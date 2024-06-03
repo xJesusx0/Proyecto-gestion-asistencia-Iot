@@ -8,12 +8,39 @@
     <script src="../js/validarLogin.js"></script>
     <script src="../js/logout.js"></script>
     <script src="../js/validarRoles.js"></script>
+    <script src="../js/students.js"></script>
+    <link rel="stylesheet" href="../css/students.css">
 </head>
 <body>
-    <div class="container">
-        <h1 id="mensaje"></h1>
-        <input type="button" value="Cerrar sesion" onclick="logout()">
-    </div>
+
+    <nav>
+        <div>
+                <img class="logoiub" src="../img/logoiub.png" alt="LogoIUB">
+        </div>
     
+        <div class="menuDesplegable">
+            <button id="btnDesplegable" class="dropbtn"></button>
+            <div class="dropdown-content">
+                <a onclick="logout()">Cerrar sesión</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="welcome">
+        <div>
+            <h2 id="welcomeUser">
+                Bienvenido, 
+            </h2>    
+        </div>
+        <div class="containerWelcomeData">
+            <p id="welcomeData">
+                
+            </p>
+            
+        </div>
+    </div>
+
+    
+
 </body>
 </html>
