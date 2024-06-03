@@ -1,0 +1,84 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+.logoiub{
+    width: 70px;
+    height: 40px;
+}
+nav{
+    display: flex;
+    justify-content: space-between;
+    background-color: rgba(234, 229, 229, 0.636);
+    padding: 7px;
+    padding-left: 70px;
+    box-shadow: 1px 1px 10px gray;
+}
+.welcome{
+    display: flex;
+    justify-content: space-between;
+    padding: 40px 10%;
+}
+#welcomeUser{
+    text-transform: capitalize;
+}
+#welcomeData{
+    margin: 0;
+}
+.containerWelcomeData{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    font-size: 15px;
+}
+.menuDesplegable {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background-color: #f9f9f9;
+    color: black;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    outline: none;
+    min-width: 160px;
+    text-transform: capitalize;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 4px;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.menuDesplegable:hover .dropdown-content {
+    display: block;
+}
+
+.menuDesplegable:hover .dropbtn {
+    background-color: #ddd;
+}
+
+#btnimagen > *{
+    padding-left: 3px;
+}
