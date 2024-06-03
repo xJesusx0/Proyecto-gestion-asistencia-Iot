@@ -8,16 +8,17 @@ const validarDatos = () => {
     })
 
     .then(data => {
-      const username = document.getElementById("username").value
+      const username = document.getElementById("username").value.toLowerCase()
       const password = document.getElementById("password").value
       const selectedRole = document.querySelector('input[name="role"]:checked').value
+
       /*
       console.log(username)
       console.log(password)
       console.log(selectedRole)
-
       console.log(data)
       */
+
       for (let i = 0; i < data.length; i++) {
         let element = data[i];
         /*
@@ -25,7 +26,6 @@ const validarDatos = () => {
         console.log(`password: ${element.password}`)
         console.log(`role: ${element.role}`)
         */
-
         if (username == element.username && password === element.password) {
           
           if(selectedRole !== element.role){
