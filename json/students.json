@@ -1,0 +1,53 @@
+[
+    {
+        "name": "jesus",
+        "courses": [
+            {
+                "course": "Bases de datos",
+                "fails": 2
+            },
+            {
+                "course": "Paginas web",
+                "fails": 3
+            },
+            {
+                "course": "Proyecto integrador",
+                "fails": 0
+            }
+        ]
+    },
+    {
+        "name": "daniel",
+        "courses": [
+            {
+                "course": "Bases de datos",
+                "fails": 1
+            },
+            {
+                "course": "Paginas web",
+                "fails": 2
+            },
+            {
+                "course": "Proyecto integrador",
+                "fails": 1
+            }
+        ]
+    },
+    {
+        "name": "alberto",
+        "courses": [
+            {
+                "course": "Bases de datos",
+                "fails": 0
+            },
+            {
+                "course": "Paginas web",
+                "fails": 1
+            },
+            {
+                "course": "Proyecto integrador",
+                "fails": 2
+            }
+        ]
+    }
+]
