@@ -12,7 +12,6 @@ nav{
     justify-content: space-between;
     background-color: rgba(234, 229, 229, 0.636);
     padding: 7px 40px 7px 80px;
-    /* padding-left: 70px; */
     box-shadow: 1px 1px 10px gray;
 }
 .welcome{
