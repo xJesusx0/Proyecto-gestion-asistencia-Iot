@@ -1,19 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profesor</title>
+    
     <script src="../js/routes.js"></script>
     <script src="../js/validarLogin.js"></script>
     <script src="../js/logout.js"></script>
     <script src="../js/validarRoles.js"></script>
+    <script src="../js/teachers.js"></script>
+
+    <link rel="stylesheet" href="../css/modal.css">
+    <link rel="stylesheet" href="../css/students.css">
+   <!-- <link rel="stylesheet" href="../css/teachers.css">-->
 </head>
+
 <body>
-    <div class="container">
-        <h1 id="mensaje"></h1>
-        <input type="button" value="Cerrar sesion" onclick="logout()">
+
+    <nav>
+        <div>
+            <img class="logoiub" src="../img/logoiubLetras.png" alt="LogoIUB">
+        </div>
+
+        <div class="menuDesplegable">
+            <button id="btnDesplegable" class="dropbtn"></button>
+            <div class="dropdown-content">
+                <a onclick="logout()">Cerrar sesión</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="welcome">
+        <div>
+            <h2 id="welcomeUser">
+                Bienvenido,
+            </h2>
+        </div>
+        <div class="containerWelcomeData">
+            <p id="welcomeData">
+
+            </p>
+
+        </div>
+    </div>
+    <div id="coursesContainer" class="containerCards">
+        <!-- Aqui van los cursos y estudiantes -->
+    </div>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="cerrarModal()">&times;</span>
+            <h3>Lista de estudiantes</h3>
+            <div class="students-container">
+                
+            </div>
+        </div>
     </div>
     
+    <script src="../js/modal.js"></script>
 </body>
+
 </html>
