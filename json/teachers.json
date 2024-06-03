@@ -1,0 +1,36 @@
+[
+    {
+        "name": "brayan",
+        "courses": [
+            {
+                "course": "Paginas web",
+                "students": ["jesus", "daniel", "alberto"]
+            },
+            {
+                "course": "Proyecto integrador",
+                "students": ["ana", "carlos", "laura"]
+            },
+            {
+                "course": "Producción multimedia",
+                "students": ["maria", "juan", "sara"]
+            }
+        ]
+    },
+    {
+        "name": "evelio",
+        "courses": [
+            {
+                "course": "Bases de datos",
+                "students": ["andres", "luisa", "pedro"]
+            },
+            {
+                "course": "Estructuras de datos",
+                "students": ["lucia", "juan", "diego"]
+            },
+            {
+                "course": "Proyecto integrador",
+                "students": ["sofia", "fernando", "carolina"]
+            }
+        ]
+    }
+]
