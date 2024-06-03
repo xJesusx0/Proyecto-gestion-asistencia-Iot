@@ -20,6 +20,11 @@
       "role": "profesor"
     },
     {
+      "username": "evelio",
+      "password": "123456",
+      "role": "profesor"
+    },
+    {
       "username": "moises",
       "password": "123456",
       "role": "administrador"
