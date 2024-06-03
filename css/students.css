@@ -86,23 +86,32 @@ nav{
 }
 .containerCards{
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
+}
+#pCards{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 90px;
+    padding: 16px;
+    max-width: 1200px;
+    padding-left: 8%;
 }
 .card {
     position: relative;
     display: flex;
     flex-direction: column;
-    /* min-width: 0; */
     word-wrap: break-word;
     background-color: #fff;
     background-clip: border-box;
-    border: 1px solid rgba(0, 0, 0, 0.125);
+    border: 1px solid rgba(0, 0, 0, 0.107);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.122);
     border-radius: 0.50rem;
-    width: 20%;
+    width: 25%;
 }
 
 .card-img-top {
     width: 100%;
+    height: auto;
     border-top-left-radius: calc(0.25rem - 1px);
     border-top-right-radius: calc(0.25rem - 1px);
 }
@@ -110,11 +119,15 @@ nav{
 .card-body {
     flex: 1 1 auto;
     padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
 }
 
 .card-title {
     margin-bottom: 0.75rem;
-    font-size: 1.25rem;
+    font-size: 1.10em;
     margin-top: 0.25rem;
 }
 
@@ -139,6 +152,13 @@ nav{
     background-color: #007bff;
     border-color: #007bff;
     text-decoration: none;
+}
+#disabled-link {
+    pointer-events: none;
+    cursor: not-allowed;
+    text-decoration: none;
+    background-color: gray;
+    border-color: gray;
 }
 
 .btnCard:hover {
