@@ -8,7 +8,9 @@ const validarDatos = () => {
     })
 
     .then(data => {
-      const username = document.getElementById("username").value.toLowerCase()
+      let username = document.getElementById("username").value.toLowerCase()
+      username = username.replace(/\s+/g, '')
+      
       const password = document.getElementById("password").value
       const selectedRole = document.querySelector('input[name="role"]:checked').value
 
