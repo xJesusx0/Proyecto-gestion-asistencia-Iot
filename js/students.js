@@ -25,10 +25,10 @@ fetch('../json/students.json')
     materias = student['courses']
     
     botonValido = ``
-   
     
     for (let j = 0; j < materias.length; j++) {
-      (materias[j].fails == 0) ? botonValido += `id="disabled-link" onclick="return false;"`: botonValido += ``
+
+      (materias[j].fails == 0) ? botonValido += `id="disabled-link" onclick="return false;"`: botonValido = ``
       document.getElementById('pCards').innerHTML += `
       <div class="card">
         <img src="../img/textura.jpg" class="card-img-top" alt="Fondo Carta">
