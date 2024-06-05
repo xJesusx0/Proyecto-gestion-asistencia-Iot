@@ -1,20 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Administrador</title>
+
     <script src="../js/routes.js"></script>
     <script src="../js/validarLogin.js"></script>
     <script src="../js/logout.js"></script>
     <script src="../js/validarRoles.js"></script>
+    <script src="../js/administrators.js"></script>
+
     <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/administrators.css">
+    <link rel="stylesheet" href="../css/modal.css">
+    <link rel="stylesheet" href="../css/students.css">
+    <link rel="stylesheet" href="../css/footer.css">
+
 </head>
+
 <body>
-    <div class="container">
-        <h1 id="mensaje"></h1>
-        <input type="button" value="Cerrar sesion" onclick="logout()">
+    <nav>
+        <div>
+            <img class="logoiub" src="../img/logoiubLetras.png" alt="LogoIUB">
+        </div>
+        <div class="menuDesplegable">
+            <button id="btnDesplegable" class="dropbtn"></button>
+            <div class="dropdown-content">
+                <a onclick="logout()">Cerrar sesión</a>
+            </div>
+        </div>
+    </nav>
+    <div class="welcome">
+        <div>
+            <h2 id="welcomeUser">Bienvenido,</h2>
+        </div>
+        <div class="containerWelcomeData">
+            <p id="welcomeData"></p>
+        </div>
     </div>
-    
+    <div class="containerTable">
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Rol</th>
+                    <th>Contraseña</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="usersTableBody">
+                <!-- Aquí se generan las demás filas -->
+            </tbody>
+        </table>
+    </div>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="cerrarModal()">&times;</span>
+            <h3>Lista de estudiantes</h3>
+            <div class="students-container"></div>
+        </div>
+    </div>
+    <script src="../js/modal.js"></script>
 </body>
+<footer class="footer">
+    <div class="logo-container">
+        <img src="../img/logoiub.png" alt="Logo">
+    </div>
+    <div class="names-container">
+        <h3>Jesus Perea</h3>
+        <h3>Alberto Perez</h3>
+        <h3>Daniel Dussan</h3>
+    </div>
+    <div class="contact-container">
+        <h3>Contacto: </h3>
+        <h3>Bienestar@unibarranquilla.edu.co</h3>
+        <h3>Teléfono: +123456789</h3>
+    </div>
+</footer>
+
 </html>
