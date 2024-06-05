@@ -34,7 +34,7 @@ const validarDatos = () => {
             alert("Rol incorrecto")
             return
           }
-          alert("Bienvenido")
+          alert(`Bienvenido denuevo, ${username} 👋`)
 
 
           localStorage.setItem('loggedIn', 'true')
