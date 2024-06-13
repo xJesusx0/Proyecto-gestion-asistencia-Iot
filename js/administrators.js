@@ -1,4 +1,4 @@
-fetch(window.jsonRoutes.adminsData)
+fetch(window.jsonRoutes.usersData)
 .then(response => {
     if (!response.ok) {
         throw new Error('No se pudo leer el archivo JSON')
