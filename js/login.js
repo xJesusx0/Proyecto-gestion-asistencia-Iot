@@ -3,9 +3,11 @@ if (localStorage.getItem('loggedIn') === 'true') {
   window.location.href = window.routes[role]
 }
 
-
 const validarDatos = () => {
-  fetch('https://raw.githubusercontent.com/xJesusx0/Actividad-paginas-web/main/json/users_data.json')
+
+  console.log(window.jsonRoutes)
+
+  fetch(window.jsonRoutes.usersData)
     .then(response => {
       if (!response.ok) {
         throw new Error('No se pudo leer el archivo JSON')
@@ -29,12 +31,15 @@ const validarDatos = () => {
             alert("Rol incorrecto")
             return
           }
+          window.userId = element.id;
+
           alert(`Bienvenido de nuevo, ${username} 👋`)
 
-
+          localStorage.setItem('userId',element.id)
           localStorage.setItem('loggedIn', 'true')
           localStorage.setItem('username', username)
           localStorage.setItem('role', selectedRole)
+
 
           window.location.href = window.routes[selectedRole]
           return
