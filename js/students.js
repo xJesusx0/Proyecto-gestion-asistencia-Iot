@@ -1,4 +1,4 @@
-fetch('../json/students.json')
+fetch(window.jsonRoutes.studentsData)
   .then(response => {
     if (!response.ok) {
       throw new Error('No se pudo leer el archivo JSON')
@@ -8,15 +8,15 @@ fetch('../json/students.json')
   })
 
   .then(data => {
-    for (let i = 0; i < data.length; i++) {
+    
+    data = data['0']
 
-      student = data[i]
+    const userId = localStorage.getItem('userId');
 
-      if (student['name'] === localStorage.getItem('username')) {
-        break
-      }
 
-    }
+    console.log(userId);
+    console.log(data);
+    student = data[userId];
 
     console.log(student['name'])
     document.getElementById('btnDesplegable').innerHTML = student['name']
