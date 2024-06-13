@@ -3,7 +3,3 @@ if (localStorage.getItem('loggedIn') !== 'true') {
 }
 
 const username = localStorage.getItem('username')
-
-// document.addEventListener('DOMContentLoaded', (event) => {
-//     document.getElementById('mensaje').innerText = `Bienvenido, ${username}!`
-// });
