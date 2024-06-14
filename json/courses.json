@@ -1,55 +1,79 @@
 {
     "courses": {
-        "COM35":{
+        "COM35": {
             "id": "COM35",
             "courseName": "Paginas web",
             "groupIds": ["SIN_G1"]
         },
-        "IMD02":{
+        "IMD02": {
             "id": "IMD02",
             "courseName": "Proyecto integrador",
-            "groupIds": ["SIN_G2","SIN_G6"]
+            "groupIds": ["SIN_G2", "SIN_G6"]
         },
-        "COM22":{
+        "COM22": {
             "id": "COM22",
             "courseName": "Produccion multimedial",
             "groupIds": ["SIN_G3"]
         },
-        "COM26":{
+        "COM26": {
             "id": "COM26",
             "courseName": "Bases de datos",
             "groupIds": ["SIN_G4"]
         },
-        "COM25":{
+        "COM25": {
             "id": "COM25",
             "courseName": "Estructuras de datos",
             "groupIds": ["SIN_G5"]
         }
     },
     "groups": {
-        "SIN_G1":{
+        "SIN_G1": {
             "groupId": "SIN_G1",
-            "students": ["jesus", "daniel", "alberto"]
+            "students": [
+                { "name": "jesus", "fails": 3 },
+                { "name": "daniel", "fails": 0 },
+                { "name": "alberto", "fails": 1 }
+            ]
         },
-        "SIN_G2":{
+        "SIN_G2": {
             "groupId": "SIN_G2",
-            "students": ["ana", "carlos", "laura"]
+            "students": [
+                { "name": "ana", "fails": 0 },
+                { "name": "carlos", "fails": 2 },
+                { "name": "laura", "fails": 0 }
+            ]
         },
-        "SIN_G3":{
+        "SIN_G3": {
             "groupId": "SIN_G3",
-            "students": ["lucia", "pedro", "martin"]
+            "students": [
+                { "name": "lucia", "fails": 1 },
+                { "name": "pedro", "fails": 0 },
+                { "name": "martin", "fails": 0 }
+            ]
         },
-        "SIN_G4":{
+        "SIN_G4": {
             "groupId": "SIN_G4",
-            "students": ["sofia", "miguel", "diana"]
+            "students": [
+                { "name": "sofia", "fails": 0 },
+                { "name": "miguel", "fails": 0 },
+                { "name": "diana", "fails": 0 }
+            ]
         },
-        "SIN_G5":{
+        "SIN_G5": {
             "groupId": "SIN_G5",
-            "students": ["jorge", "camila", "roberto"]
+            "students": [
+                { "name": "jorge", "fails": 0 },
+                { "name": "camila", "fails": 0 },
+                { "name": "roberto", "fails": 0 }
+            ]
         },
-        "SIN_G6":{
-            "groupId":"SIN_G6",
-            "students":["jose","diego","elaine"]
+        "SIN_G6": {
+            "groupId": "SIN_G6",
+            "students": [
+                { "name": "jose", "fails": 0 },
+                { "name": "diego", "fails": 0 },
+                { "name": "elaine", "fails": 0 }
+            ]
         }
     }
 }
