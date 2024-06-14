@@ -43,9 +43,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 const row = document.createElement('tr')
 
                 const nameCell = document.createElement('td')
-                nameCell.textContent = student
+                nameCell.textContent = student.name
                 row.appendChild(nameCell)
 
+                const failsCell = document.createElement('td')
+                failsCell.textContent = student.fails
+                row.appendChild(failsCell)
+
+                const totalCell = document.createElement('td')
+                totalCell.textContent = 10
+                row.appendChild(totalCell)
                 // const roleCell = document.createElement('td')
                 // roleCell.textContent = user.role
                 // row.appendChild(roleCell)
