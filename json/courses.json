@@ -1,0 +1,55 @@
+{
+    "courses": {
+        "COM35":{
+            "id": "COM35",
+            "courseName": "Paginas web",
+            "groupIds": ["SIN_G1"]
+        },
+        "IMD02":{
+            "id": "IMD02",
+            "courseName": "Proyecto integrador",
+            "groupIds": ["SIN_G2","SIN_G6"]
+        },
+        "COM22":{
+            "id": "COM22",
+            "courseName": "Produccion multimedial",
+            "groupIds": ["SIN_G3"]
+        },
+        "COM26":{
+            "id": "COM26",
+            "courseName": "Bases de datos",
+            "groupIds": ["SIN_G4"]
+        },
+        "COM25":{
+            "id": "COM25",
+            "courseName": "Estructuras de datos",
+            "groupIds": ["SIN_G5"]
+        }
+    },
+    "groups": {
+        "SIN_G1":{
+            "groupId": "SIN_G1",
+            "students": ["jesus", "daniel", "alberto"]
+        },
+        "SIN_G2":{
+            "groupId": "SIN_G2",
+            "students": ["ana", "carlos", "laura"]
+        },
+        "SIN_G3":{
+            "groupId": "SIN_G3",
+            "students": ["lucia", "pedro", "martin"]
+        },
+        "SIN_G4":{
+            "groupId": "SIN_G4",
+            "students": ["sofia", "miguel", "diana"]
+        },
+        "SIN_G5":{
+            "groupId": "SIN_G5",
+            "students": ["jorge", "camila", "roberto"]
+        },
+        "SIN_G6":{
+            "groupId":"SIN_G6",
+            "students":["jose","diego","elaine"]
+        }
+    }
+}
