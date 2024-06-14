@@ -1,7 +1,7 @@
-if (localStorage.getItem('loggedIn') === 'true') {
-  role = localStorage.getItem('role')
-  window.location.href = window.routes[role]
-}
+// if (localStorage.getItem('loggedIn') === 'true') {
+//   role = localStorage.getItem('role')
+//   window.location.href = window.routes[role]
+// }
 
 const validarDatos = () => {
 
@@ -34,13 +34,16 @@ const validarDatos = () => {
           window.userId = element.id;
 
           alert(`Bienvenido de nuevo, ${username} 👋`)
+          
+          const userData = {
+            'username':username,
+            'role':selectedRole,
+            'loggedIn':'true',
+            'userId':element.id
 
-          localStorage.setItem('userId',element.id)
-          localStorage.setItem('loggedIn', 'true')
-          localStorage.setItem('username', username)
-          localStorage.setItem('role', selectedRole)
-
-
+          }
+          localStorage.setItem('userData',JSON.stringify(userData))
+          
           window.location.href = window.routes[selectedRole]
           return
         }
