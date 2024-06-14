@@ -49,7 +49,7 @@ const validarDatos = () => {
           }
           localStorage.setItem('userData',JSON.stringify(userData))
           
-          window.location.href = window.routes[selectedRole]
+          window.location.href = window.routes[selectedRole][0]
           return
         }
       }
