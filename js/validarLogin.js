@@ -8,6 +8,7 @@ try {
     let loggedIn = userData.loggedIn;
 
     if (loggedIn !== 'true') {
+        localStorage.removeItem('userData');
         window.location.href = 'login.html';
     }
 
