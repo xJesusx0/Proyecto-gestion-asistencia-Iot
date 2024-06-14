@@ -68,7 +68,7 @@ fetch(window.jsonRoutes.teachersData)
             const button = document.createElement('button');
             button.classList.add('btnCard');
             button.textContent = 'Ver lista de estudiantes';
-            button.setAttribute('onclick', `redirectToStudentsList('${groupId}')`);
+            button.setAttribute('onclick', `redirectToStudentsList('${groupId}','${course.id}')`);
             cardBody.appendChild(button);
 
             // Agregar el div del curso al contenedor de cursos
@@ -85,8 +85,12 @@ fetch(window.jsonRoutes.teachersData)
 
   })
 
-const redirectToStudentsList = (groupId) => {
-  localStorage.setItem('groupId',groupId)
+const redirectToStudentsList = (groupId,courseId) => {
+  const groupInfo = {
+    'groupId':groupId,
+    'courseId':courseId
+  }
+  localStorage.setItem('groupData',JSON.stringify(groupInfo))
   window.location.href = 'students-list.html';
 }
 
