@@ -1,7 +1,12 @@
-// if (localStorage.getItem('loggedIn') === 'true') {
-//   role = localStorage.getItem('role')
-//   window.location.href = window.routes[role]
-// }
+try{
+  if (userData.loggedIn === 'true') {
+    let role = userData.role;
+    window.location.href = window.routes[role];
+  }
+}  catch (error) {
+  
+}
+
 
 const validarDatos = () => {
 
@@ -34,7 +39,7 @@ const validarDatos = () => {
           window.userId = element.id;
 
           alert(`Bienvenido de nuevo, ${username} 👋`)
-          
+
           const userData = {
             'username':username,
             'role':selectedRole,
