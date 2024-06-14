@@ -11,8 +11,8 @@ fetch(window.jsonRoutes.studentsData)
     
     data = data['0']
 
-    const userId = localStorage.getItem('userId');
-
+    const userId = userData.userId;
+    console.log(userData.username)
 
     console.log(userId);
     console.log(data);
