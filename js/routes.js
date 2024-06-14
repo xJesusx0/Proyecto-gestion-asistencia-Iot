@@ -3,7 +3,8 @@ window.routes = {
         'students.html'
     ],
     'profesor': [
-        'teachers.html'
+        'teachers.html',
+        'students-list.html'
     ],
     'administrador': [
         'administrators.html'
@@ -14,14 +15,16 @@ const jsonLocalRoutes = {
     'usersData': '../json/users_data.json',
     'studentsData': '../json/students.json',
     'teachersData': '../json/teachers.json',
-    'adminsData': '../json/administrators.json'
+    'adminsData': '../json/administrators.json',
+    'coursesData':'../json/courses.json'
 }
 
 const jsonRemoteRoutes = {
     'usersData': 'https://raw.githubusercontent.com/xJesusx0/Actividad-paginas-web/main/json/users_data.json',
     'studentsData': 'https://raw.githubusercontent.com/xJesusx0/Actividad-paginas-web/main/json/students.json',
     'teachersData': 'https://raw.githubusercontent.com/xJesusx0/Actividad-paginas-web/main/json/teachers.json',
-    'adminsData': 'https://raw.githubusercontent.com/xJesusx0/Actividad-paginas-web/main/json/administrators.json'
+    'adminsData': 'https://raw.githubusercontent.com/xJesusx0/Actividad-paginas-web/main/json/administrators.json',
+    'coursesData':'https://raw.githubusercontent.com/xJesusx0/Actividad-paginas-web/main/json/courses.json'
 }
 
 
