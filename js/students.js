@@ -28,14 +28,14 @@ fetch(window.jsonRoutes.studentsData)
     botonValido = ``
 
     for (let j = 0; j < materias.length; j++) {
-      (materias[j].fails == 0) ? botonValido = `id="disabled-link" onclick="return false;"` : botonValido = ``
+      // (materias[j].fails == 0) ? botonValido = `id="disabled-link" onclick="return false;"` : botonValido = ``
       document.getElementById('pCards').innerHTML += `
       <div class="card">
         <img src="../img/textura.jpg" class="card-img-top" alt="Fondo Carta">
         <div class="card-body">
           <h5 class="card-title">${materias[j].course}</h5>
           <p class="card-text">No de inasistencias: ${materias[j].fails}</p>
-          <a href="history.html" class="btnCard" ${botonValido}>Justificar</a>
+          <a href="history.html" class="btnCard" ${botonValido}>Ver historial</a>
         </div>
       </div>`
 
