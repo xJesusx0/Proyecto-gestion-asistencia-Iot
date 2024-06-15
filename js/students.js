@@ -21,7 +21,8 @@ fetch(window.jsonRoutes.studentsData)
     console.log(student['name'])
     document.getElementById('btnDesplegable').innerHTML = student['name']
     document.getElementById('welcomeUser').innerHTML += ` ${student['name']} 🌟`
-    document.getElementById('welcomeData').innerHTML += `Programa: ${student['program']} <br> Cuatrimestre: ${student['period']} `
+    document.getElementById('program-container').innerHTML = `Programa: ${student['program']}`
+    document.getElementById('period-container').innerHTML =  `Cuatrimestre: ${student['period']} `
     materias = student['courses']
 
     botonValido = ``
@@ -34,7 +35,7 @@ fetch(window.jsonRoutes.studentsData)
         <div class="card-body">
           <h5 class="card-title">${materias[j].course}</h5>
           <p class="card-text">No de inasistencias: ${materias[j].fails}</p>
-          <a href="#" class="btnCard" ${botonValido}>Justificar</a>
+          <a href="history.html" class="btnCard" ${botonValido}>Justificar</a>
         </div>
       </div>`
 
