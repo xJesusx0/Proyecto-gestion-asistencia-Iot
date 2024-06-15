@@ -35,13 +35,19 @@ fetch(window.jsonRoutes.studentsData)
                 const studentAttendances = attendancesData[student.id]
                 console.log(studentAttendances)
 
+                let groupId = localStorage.getItem('groupData')
+                groupId = String(groupId)
+                console.log(groupId)
+                
+                console.log(studentAttendances[groupId])
+
                 const tableBody = document.getElementById('table-body')
 
-                studentAttendances.forEach(attendance => {
+                studentAttendances["SIN_G1"].forEach(attendance => {
                     const row = document.createElement('tr') 
 
                     const groupCell = document.createElement('td')
-                    groupCell.textContent = attendance.group
+                    groupCell.textContent = groupId
                     row.appendChild(groupCell)
 
                     const courseCell = document.createElement('td')

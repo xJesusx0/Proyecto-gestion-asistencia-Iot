@@ -1,3 +1,10 @@
+const redirectToAttendancesList = (groupId) => {
+  
+  localStorage.setItem('groupData',groupId)
+  window.location.href = 'history.html';
+}
+
+
 fetch(window.jsonRoutes.studentsData)
   .then(response => {
     if (!response.ok) {
@@ -35,7 +42,7 @@ fetch(window.jsonRoutes.studentsData)
         <div class="card-body">
           <h5 class="card-title">${materias[j].course}</h5>
           <p class="card-text">No de inasistencias: ${materias[j].fails}</p>
-          <a href="history.html" class="btnCard" ${botonValido}>Ver historial</a>
+          <input type="button" value="Ver historial" class="btnCard" onclick="redirectToAttendancesList('${materias[j].groupId}')">
         </div>
       </div>`
 
