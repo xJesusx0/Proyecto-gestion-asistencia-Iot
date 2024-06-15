@@ -1,0 +1,73 @@
+{
+    "1111": [
+        {
+            "group": "SIN_G1",
+            "course": "Paginas web",
+            "date": "1 de Marzo"
+        },
+        {
+            "group": "SIN_G1",
+            "course": "Paginas web",
+            "date": "8 de Marzo"
+        },
+        {
+            "group": "SIN_G1",
+            "course": "Paginas web",
+            "date": "15 de Marzo"
+        },
+        {
+            "group": "SIN_G4",
+            "course": "Bases de datos",
+            "date": "28 de Febrero"
+        },
+        {
+            "group": "SIN_G4",
+            "course": "Bases de datos",
+            "date": "6 de Marzo"
+        }
+    ],
+    "1112": [
+        {
+            "group": "SIN_G1",
+            "course": "Paginas web",
+            "date": "3 de Abril"
+        },
+        {
+            "group": "SIN_G1",
+            "course": "Paginas web",
+            "date": "10 de Abril"
+        },
+        {
+            "group": "SIN_G4",
+            "course": "Bases de datos",
+            "date": "17 de Abril"
+        },
+        {
+            "group": "SIN_G6",
+            "course": "Proyecto integrador",
+            "date": "24 de Abril"
+        }
+    ],
+    "1113": [
+        {
+            "group": "SIN_G1",
+            "course": "Paginas web",
+            "date": "5 de Mayo"
+        },
+        {
+            "group": "SIN_G4",
+            "course": "Bases de datos",
+            "date": "12 de Mayo"
+        },
+        {
+            "group": "SIN_G6",
+            "course": "Proyecto integrador",
+            "date": "19 de Mayo"
+        },
+        {
+            "group": "SIN_G6",
+            "course": "Proyecto integrador",
+            "date": "26 de Mayo"
+        }
+    ]
+}
