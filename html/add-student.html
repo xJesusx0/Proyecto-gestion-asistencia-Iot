@@ -9,9 +9,9 @@
     <script src="../js/getUserData.js"></script>
     <script src="../js/routes.js"></script>
     <script src="../js/validarLogin.js"></script>
-    <script src="../js/logout.js"></script>
     <script src="../js/validarRoles.js"></script>
-    <script src="../js/administrators.js"></script>
+    <script src="../js/logout.js"></script>
+    <script src="../js/addStudent.js"></script>
 
     <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../css/modal.css">
@@ -36,31 +36,27 @@
     <div class="welcome">
         <div>
             <h2 id="welcomeUser">Bienvenido,</h2>
+            <a id="btnToggle" href="administrators.html">Volver a la pagina anterior</a>
+
         </div>
     </div>
-
-
-    <div class="buttons-container">
-        <button id="btnToggle" onclick="alternarLista()">Ocultar lista de usuarios</button>
-        <a id="btnToggle" href="add-student.html">Agregar un estudiante</a>
+    
+    <div class="container-formulario">
+        <form>
+            <h2>Registro Estudiantes</h2>
+            <label for="name-user">Nombre De Usuario<input type="text" name="name-user" id="name-user" required></label>
+            <label for="password-user">Contraseña<input type="text" name="password-user" id="password-user" required></label>
+            <label for="document-id">No De Documento<input type="number" name="document-id" id="document-id" required></label>
+            
+            <label>Grupos Disponibles</label>
+            <div id="checkboxes-container">
+                <!-- Aqui van los checkboxes generados automaticamente -->
+            </div>
+            <input type="submit" class="submit-button" value="Agregar Estudiante" onclick="addStudent(event)">
+        </form>
     </div>
 
 
-    <div class="containerTable">
-        <table id="tableUsers">
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Rol</th>
-                    <th>Contraseña</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody id="usersTableBody">
-                
-            </tbody>
-        </table>
-    </div>
 
     
     <footer class="footer">
