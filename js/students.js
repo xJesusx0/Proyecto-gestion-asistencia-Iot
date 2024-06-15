@@ -34,7 +34,10 @@ fetch(window.jsonRoutes.studentsData)
         <div class="card-body">
           <h5 class="card-title">${materias[j].course}</h5>
           <p class="card-text">No de inasistencias: ${materias[j].fails}</p>
-          <a href="#" class="btnCard" ${botonValido}>Justificar</a>
+          <div class="card-options">
+            <a href="#" class="btnCard" ${botonValido}>Estadistica</a>
+            <a href="../html/justificacion.html" class="btnCard" ${botonValido}>Justificar</a>
+          </div>
         </div>
       </div>`
 

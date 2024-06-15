@@ -1,0 +1,61 @@
+.contenedor-login {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.107);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.122);
+    max-width: 370px;
+    width: 100%;
+    height: 80%;
+    text-align: center;
+    color: #333;
+}
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+    height: 80%;
+    
+}
+
+.submit-button {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 0.8rem;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.submit-button:hover {
+    color: #fff;
+    background-color: #0056b3;
+    border-color: #004085;
+}
+
+.select-group {
+    width: 100%;
+    padding: 5px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+    background-color: #f8f8f8;
+    color: #333;
+}
+
+.select-group:focus {
+    border-color: #4CAF50;
+    outline: none;
+    background-color: #e9f5e9;
+}
+
+label{
+
+    font-size: 20px;
+    font-weight: bold;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
