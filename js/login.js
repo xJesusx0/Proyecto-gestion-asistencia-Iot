@@ -1,6 +1,5 @@
 try{
   console.log(userData)
-
   if (userData.loggedIn === 'true') {
     console.log(userData)
     let role = userData.role;
