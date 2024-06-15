@@ -31,12 +31,12 @@ fetch(window.jsonRoutes.studentsData)
             .then(failsData => {
 
                 const studentFails = failsData[student.id];
-
+                
                 const select = document.getElementById('inasistencia');
-                studentFails.forEach(opcion => {
+                studentFails.forEach(fail => {
                     const optionElement = document.createElement('option');
-                    optionElement.value = opcion.valor;
-                    optionElement.textContent = `${opcion.group}, ${opcion.date}`;
+                    optionElement.value = fail.valor;
+                    optionElement.textContent = `${fail.course}, ${fail.date}`;
                     select.appendChild(optionElement);
                 });
             })
