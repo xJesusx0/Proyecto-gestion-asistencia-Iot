@@ -37,7 +37,6 @@ fetch(window.jsonRoutes.studentsData)
           <p class="card-text">No de inasistencias: ${materias[j].fails}</p>
           <div class="card-options">
             <a href="#" class="btnCard" ${botonValido}>Estadistica</a>
-            <a href="../html/justificacion.html" class="btnCard" ${botonValido}>Justificar</a>
           </div>
         </div>
       </div>`
