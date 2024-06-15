@@ -1,7 +1,7 @@
 try{
   if (userData.loggedIn === 'true') {
     let role = userData.role;
-    window.location.href = window.routes[role];
+    window.location.href = window.routes[role][0];
   }
 }  catch (error) {
   
