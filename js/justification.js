@@ -35,7 +35,7 @@ fetch(window.jsonRoutes.studentsData)
                 const select = document.getElementById('inasistencia');
                 studentFails.forEach(fail => {
                     const optionElement = document.createElement('option');
-                    optionElement.value = fail.valor;
+                    optionElement.value = fail.group;
                     optionElement.textContent = `${fail.course}, ${fail.date}`;
                     select.appendChild(optionElement);
                 });
