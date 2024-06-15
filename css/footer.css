@@ -5,6 +5,7 @@
     display: flex;
     width: 100%;
     justify-content: space-evenly;
+    font-size: 11px;
 }
 
 .logo-container {
