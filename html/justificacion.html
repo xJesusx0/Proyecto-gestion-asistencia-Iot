@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,6 +16,7 @@
     <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="../css/justificacion.css">
 </head>
+
 <body>
     <nav>
         <div>
@@ -33,25 +35,30 @@
             <h1> Sube Tus Justificaciones</h1>
             <h3 id="program-container">Programa: </h3>
             <h3 id="period-container">Grupo: </h3>
-            <a href="students.html"><h4>Voler a la pagina principal</h4></a>
+            <a href="students.html">
+                <h4>Voler a la pagina principal</h4>
+            </a>
         </div>
 
-        
-    <div class="contenedor-login">
-        <div class="contenido-formulario">
-                <form  class="formulario">
-                    <div><h2>Formulario de Inasistencia</h2></div>
+
+        <div class="contenedor-login">
+            <div class="contenido-formulario">
+                <form class="formulario">
+                    <div>
+                        <h2>Formulario de Inasistencia</h2>
+                    </div>
                     <!-- Motivo de Inasistencia -->
                     <label for="motivo">Motivo de Inasistencia:</label><br>
-                    <textarea id="motivo" name="motivo" rows="4" cols="50" placeholder="Explique el motivo de su inasistencia..."></textarea><br>
-            
+                    <textarea id="motivo" name="motivo" rows="4" cols="50"
+                        placeholder="Explique el motivo de su inasistencia..."></textarea><br>
+
                     <!-- inasistencia -->
                     <label for="inasistencia">Inasistencia:</label><br>
                     <select id="inasistencia" name="inasistencia" class="select-group">
                         <option value="">Seleccione la inasistencia</option>
                         <!-- Aqui van las inasistencias -->
                     </select><br>
-            
+
                     <!-- Tipo de Inasistencia -->
                     <label for="tipo">Tipo de Inasistencia:</label><br>
                     <select id="tipo" name="tipo" class="select-group">
@@ -64,17 +71,17 @@
 
                     <label for="soporte">Subir Soporte de Inasistencia:</label><br>
                     <input type="file" id="soporte" name="soporte"><br>
-            
+
                     <!-- Botón de Enviar -->
                     <button type="submit" class="submit-button">Enviar</button>
                 </form>
-        </div>   
-    </div>
+            </div>
+        </div>
 
 
-        
+
     </div>
-  
+
 
 
 
@@ -101,4 +108,5 @@
         </div>
     </footer>
 </body>
+
 </html>
