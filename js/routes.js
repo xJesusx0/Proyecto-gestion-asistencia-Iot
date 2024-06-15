@@ -21,7 +21,9 @@ const jsonLocalRoutes = {
     'studentsData': '../json/students.json',
     'teachersData': '../json/teachers.json',
     'adminsData': '../json/administrators.json',
-    'coursesData':'../json/courses.json'
+    'coursesData':'../json/courses.json',
+    'failsData':'../json/fails.json',
+    'attendancesData':'../json/attendances.json'
 }
 
 const jsonRemoteRoutes = {
@@ -29,7 +31,9 @@ const jsonRemoteRoutes = {
     'studentsData': 'https://raw.githubusercontent.com/xJesusx0/Actividad-paginas-web/main/json/students.json',
     'teachersData': 'https://raw.githubusercontent.com/xJesusx0/Actividad-paginas-web/main/json/teachers.json',
     'adminsData': 'https://raw.githubusercontent.com/xJesusx0/Actividad-paginas-web/main/json/administrators.json',
-    'coursesData':'https://raw.githubusercontent.com/xJesusx0/Actividad-paginas-web/main/json/courses.json'
+    'coursesData':'https://raw.githubusercontent.com/xJesusx0/Actividad-paginas-web/main/json/courses.json',
+    'failsData':'https://raw.githubusercontent.com/xJesusx0/Actividad-paginas-web/main/json/fails.json',
+    'attendancesData':'https://raw.githubusercontent.com/xJesusx0/Actividad-paginas-web/main/json/attendances.json'
 }
 
 

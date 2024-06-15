@@ -31,7 +31,7 @@
             "groupId": "SIN_G1",
             "students": [
                 { "name": "jesus", "fails": 3 },
-                { "name": "daniel", "fails": 0 },
+                { "name": "daniel", "fails": 2 },
                 { "name": "alberto", "fails": 1 },
                 { "name": "maria", "fails": 2 },
                 { "name": "luis", "fails": 1 }
@@ -61,9 +61,9 @@
             "groupId": "SIN_G4",
             "students": [
                 { "name": "sofia", "fails": 0 },
-                { "name": "miguel", "fails": 0 },
-                { "name": "diana", "fails": 0 },
-                { "name": "victor", "fails": 1 },
+                { "name": "jesus", "fails": 2 },
+                { "name": "daniel", "fails": 1 },
+                { "name": "alberto", "fails": 0 },
                 { "name": "valentina", "fails": 3 }
             ]
         },
@@ -80,11 +80,11 @@
         "SIN_G6": {
             "groupId": "SIN_G6",
             "students": [
-                { "name": "jose", "fails": 0 },
+                { "name": "jesus", "fails": 0 },
                 { "name": "diego", "fails": 0 },
                 { "name": "elaine", "fails": 0 },
-                { "name": "cristina", "fails": 1 },
-                { "name": "leonardo", "fails": 2 }
+                { "name": "alberto", "fails": 2},
+                { "name": "daniel", "fails": 1 }
             ]
         }
     }

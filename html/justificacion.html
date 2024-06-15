@@ -3,8 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    
+    <title>Justifica tus inasistencias</title>
+    <script src="../js/getUserData.js"></script>
+    <script src="../js/routes.js"></script>
+    <script src="../js/logout.js"></script>
+    <script src="../js/validarLogin.js"></script>
+    <script src="../js/validarRoles.js"></script>
+    <script src="../js/justification.js"></script>
+
     <link rel="stylesheet" href="../css/students.css">
     <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="../css/justificacion.css">
@@ -25,8 +31,8 @@
         <div>
             <!-- <h2 id="welcomeUser">Bienvenido,</h2> -->
             <h1> Sube Tus Justificaciones</h1>
-            <h3 id="course-container">Materia: </h3>
-            <h3 id="group-container">Grupo: </h3>
+            <h3 id="program-container">Programa: </h3>
+            <h3 id="period-container">Grupo: </h3>
             <a href="students.html"><h4>Voler a la pagina principal</h4></a>
         </div>
 
@@ -39,14 +45,11 @@
                     <label for="motivo">Motivo de Inasistencia:</label><br>
                     <textarea id="motivo" name="motivo" rows="4" cols="50" placeholder="Explique el motivo de su inasistencia..."></textarea><br>
             
-                    <!-- Materia -->
-                    <label for="materia">Modulo:</label><br>
-                    <select id="materia" name="materia" class="select-group">
-                        <option value="">Seleccione la materia</option>
-                        <option value="matematicas">Paginas web</option>
-                        <option value="ciencias">Programacion modular</option>
-                        <option value="historia">Proyecto integrador</option>
-                        <option value="lengua">Competencias Digitales</option>
+                    <!-- inasistencia -->
+                    <label for="inasistencia">Inasistencia:</label><br>
+                    <select id="inasistencia" name="inasistencia" class="select-group">
+                        <option value="">Seleccione la inasistencia</option>
+                        <!-- Aqui van las inasistencias -->
                     </select><br>
             
                     <!-- Tipo de Inasistencia -->
