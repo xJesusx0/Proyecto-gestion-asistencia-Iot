@@ -29,7 +29,7 @@ body {
 }
 
 .nav-options {
-    margin-left: rem;
+    margin-left: -7rem;
 }
 
 .nav-options a {
@@ -46,18 +46,55 @@ body {
 }
 /* ----------------------- CONTENIDO PAGE  AP🤓 -------------------------------- */
 
+.contenedor-principal
+{
+    display: flex;
+    background-color: white ;
+    font-size: 23px;
+    margin-bottom: 40px;
+    margin-left: 50px;
+    margin-right: 50px;
+    text-align: justify;
+    width: 900px;
+    pointer-events: none;
+    margin-top: 80px;
 
-.contenedor-principal{
+    box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.40);
+}
+
+.img-principal
+{
+    width: 440px;
+    height: 440px;
+}
+.marca
+{
+    font-size: 25px;
+    color: #1d1c1c;
+    font-weight: bold;
+}
+
+.descripcion
+{
+   padding: 20px;
+}
+.contenedor-informacion{
+
+     margin-top: 110px
+}
+
+
+/* .contenedor-principal{
     display: flex;
     /* border: black 1px solid; */
-    margin-top: 30px;
+    /* margin-top: 30px;
     justify-content: center;
     align-items: center;
     width: 100%;
     height: 70vh;
     font-family: 'Times New Roman', Times, serif;
-}
-.contenedor{
+} */
+/* .contenedor{
     width:80% ;
     height: 80%;
     -webkit-box-shadow: 0px 0px 26px 0px rgba(0,0,0,0.73);
@@ -93,7 +130,7 @@ body {
 
 /* ---------------- */
 
-.contenedor-extra{
+/* .contenedor-extra{
     display: flex;
     justify-content: space-around;
     margin-top: 60px;
@@ -106,7 +143,7 @@ body {
         text-align: center;
         color: white;
         background-color: #36465D
-}
+} */ 
 
 
 
