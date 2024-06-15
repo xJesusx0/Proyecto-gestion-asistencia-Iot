@@ -1,4 +1,4 @@
-fetch('../json/teachers.json')
+fetch(window.jsonRoutes.teachersData)
   .then(response => {
     if (!response.ok) {
       throw new Error('No se pudo leer el archivo JSON')
@@ -8,58 +8,89 @@ fetch('../json/teachers.json')
   })
 
   .then(data => {
-    for (let i = 0; i < data.length; i++) {
 
-      teacher = data[i]
+    data = data['0']
 
-      if (teacher['name'] === localStorage.getItem('username')) {
-        break
-      }
+    const userId = userData.userId;
+    teacher = data[userId];
 
-    }
+    fetch(window.jsonRoutes.coursesData)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('No se pudo leer el archivo JSON de cursos');
+        }
+        return response.json();
+      })
 
-    console.log(teacher['name'])
-    document.getElementById('btnDesplegable').innerHTML = teacher['name']
-    document.getElementById('welcomeUser').innerHTML += ` ${teacher['name']} 🌟`
+      .then(coursesData => {
+        // console.log(coursesData.courses);
 
-    console.log(teacher)
-    const coursesContainer = document.getElementById('pCards');
+        // console.log(teacher['name'])
+        document.getElementById('btnDesplegable').innerHTML = teacher['name']
+        document.getElementById('welcomeUser').innerHTML += ` ${teacher['name']} 🌟`
 
-    teacher.courses.forEach(course => {
-      // Crear el elemento div con la clase 'card'
-      const courseElement = document.createElement('div');
-      courseElement.classList.add('card');
+        console.log(teacher)
+        const coursesContainer = document.getElementById('pCards');
 
-      // Crear la imagen con la clase 'card-img-top' y establecer el atributo src
-      const image = document.createElement('img');
-      image.classList.add('card-img-top');
-      image.setAttribute('src', '../img/textura.jpg');
-      image.setAttribute('alt', 'Fondo Carta');
-      courseElement.appendChild(image);
+        teacher.courses.forEach(teacherGroup => {
+          // console.log(element.groupId);
+          let course = coursesData.courses[teacherGroup.courseId];
+          // console.log(course)
+          let groupId = teacherGroup.groupId
+          let groupsIds = course.groupIds
 
-      // Crear el div con la clase 'card-body'
-      const cardBody = document.createElement('div');
-      cardBody.classList.add('card-body');
-      courseElement.appendChild(cardBody);
+          // console.log(groupsIds)
 
-      // Crear el título h5 con la clase 'card-title' y establecer el texto
-      const courseTitle = document.createElement('h5');
-      courseTitle.classList.add('card-title');
-      courseTitle.textContent = course.course;
-      cardBody.appendChild(courseTitle);
+          if (groupsIds.includes(groupId)) {
 
-      // Crear el botón con la clase 'btnCard' y establecer el texto
-      const button = document.createElement('button');
-      button.classList.add('btnCard');
-      button.textContent = 'Ver lista de estudiantes';
-      button.setAttribute('onclick', `mostrarModal(${JSON.stringify(course.students)})`);
-      cardBody.appendChild(button);
+            const courseElement = document.createElement('div');
+            courseElement.classList.add('card');
 
-      // Agregar el div del curso al contenedor de cursos
-      coursesContainer.appendChild(courseElement);
-    });
+            // Crear la imagen con la clase 'card-img-top' y establecer el atributo src
+            const image = document.createElement('img');
+            image.classList.add('card-img-top');
+            image.setAttribute('src', '../img/textura.jpg');
+            image.setAttribute('alt', 'Fondo Carta');
+            courseElement.appendChild(image);
+
+            // Crear el div con la clase 'card-body'
+            const cardBody = document.createElement('div');
+            cardBody.classList.add('card-body');
+            courseElement.appendChild(cardBody);
+
+            // Crear el título h5 con la clase 'card-title' y establecer el texto
+            const courseTitle = document.createElement('h5');
+            courseTitle.classList.add('card-title');
+            courseTitle.textContent = course.courseName;
+            cardBody.appendChild(courseTitle);
+
+            // Crear el botón con la clase 'btnCard' y establecer el texto
+            const button = document.createElement('button');
+            button.classList.add('btnCard');
+            button.textContent = 'Ver lista de estudiantes';
+            button.setAttribute('onclick', `redirectToStudentsList('${groupId}','${course.id}')`);
+            cardBody.appendChild(button);
+
+            // Agregar el div del curso al contenedor de cursos
+            coursesContainer.appendChild(courseElement);
+
+
+          }
+
+        });
+
+      })
+
+
 
   })
 
-
+const redirectToStudentsList = (groupId,courseId) => {
+  const groupInfo = {
+    'groupId':groupId,
+    'courseId':courseId
+  }
+  localStorage.setItem('groupData',JSON.stringify(groupInfo))
+  window.location.href = 'students-list.html';
+}
 

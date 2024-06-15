@@ -1,4 +1,4 @@
-fetch('../json/users_data.json')
+fetch(window.jsonRoutes.usersData)
 .then(response => {
     if (!response.ok) {
         throw new Error('No se pudo leer el archivo JSON')

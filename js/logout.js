@@ -1,4 +1,4 @@
 const logout = () => {
-    localStorage.clear()
+    localStorage.removeItem('userData')
     window.location.href = 'login.html'
 }

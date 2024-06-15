@@ -3,15 +3,16 @@
     background-color: #d8d6d6;
     color: #3a3252;
     display: flex;
-    padding: 20px;
     width: 100%;
     justify-content: space-evenly;
 }
-.logo-container{
+
+.logo-container {
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
 .footer img {
     width: 125px;
     height: 60px;

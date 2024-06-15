@@ -42,7 +42,8 @@ body {
     min-width: 160px;
     text-transform: capitalize;
 }
-.navbar-nav:hover{
+
+.navbar-nav:hover {
     background-color: #ddd;
 }
 

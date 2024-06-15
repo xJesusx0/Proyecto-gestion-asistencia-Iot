@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Administrador</title>
+    <title>Lista de estudiantes</title>
 
     <script src="../js/getUserData.js"></script>
     <script src="../js/routes.js"></script>
     <script src="../js/validarLogin.js"></script>
     <script src="../js/logout.js"></script>
     <script src="../js/validarRoles.js"></script>
-    <script src="../js/administrators.js"></script>
+    <script src="../js/cleanStorage.js"></script>
+    <script src="../js/studentsList.js"></script>
 
     <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../css/administrators.css">
@@ -35,17 +35,21 @@
     </nav>
     <div class="welcome">
         <div>
-            <h2 id="welcomeUser">Bienvenido,</h2>
+            <!-- <h2 id="welcomeUser">Bienvenido,</h2> -->
+            <h1> Lista de estudiantes</h1>
+            <h3 id="course-container">Materia: </h3>
+            <h3 id="group-container">Grupo: </h3>
+            <a href="teachers.html"><h4>Voler a la pagina principal</h4></a>
         </div>
+        
     </div>
     <div class="containerTable">
         <table>
             <thead>
                 <tr>
                     <th>Nombre</th>
-                    <th>Rol</th>
-                    <th>Contraseña</th>
-                    <th>Acciones</th>
+                    <th>Inasistencias</th>
+                    <th>Clases totales</th>
                 </tr>
             </thead>
             <tbody id="usersTableBody">
@@ -53,29 +57,25 @@
             </tbody>
         </table>
     </div>
-    <div id="myModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="cerrarModal()">&times;</span>
-            <h3>Lista de estudiantes</h3>
-            <div class="students-container"></div>
+    <footer class="footer">
+        <div class="logo-container">
+            <img src="../img/logoiub.png" alt="Logo">
         </div>
-    </div>
-    <script src="../js/modal.js"></script>
+        <div class="names-container">
+            <h3>Jesus Perea</h3>
+            <h3>Alberto Perez</h3>
+            <h3>Daniel Dussan</h3>
+        </div>
+        <div class="contact-container">
+            <h3>Contacto: </h3>
+            <h3>Bienestar@unibarranquilla.edu.co</h3>
+            <h3>Teléfono: +123456789</h3>
+        </div>
+    </footer>
 </body>
-<footer class="footer">
-    <div class="logo-container">
-        <img src="../img/logoiub.png" alt="Logo">
-    </div>
-    <div class="names-container">
-        <h3>Jesus Perea</h3>
-        <h3>Alberto Perez</h3>
-        <h3>Daniel Dussan</h3>
-    </div>
-    <div class="contact-container">
-        <h3>Contacto: </h3>
-        <h3>Bienestar@unibarranquilla.edu.co</h3>
-        <h3>Teléfono: +123456789</h3>
-    </div>
-</footer>
+
+
+
+
 
 </html>

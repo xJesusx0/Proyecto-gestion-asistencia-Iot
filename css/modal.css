@@ -57,7 +57,7 @@
     color: white;
 }
 
-#confirm:hover{
+#confirm:hover {
     background-color: #FF0000;
 }
 
@@ -65,6 +65,7 @@
     background-color: #616161;
     color: white;
 }
-#cancel:hover{
+
+#cancel:hover {
     background-color: #272727;
 }
