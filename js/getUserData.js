@@ -1,7 +1,3 @@
-
-
-addEventListener('DOMContentLoaded', () => {
-    let storedData = localStorage.getItem('userData');
-    let userData = JSON.parse(storedData);
-    console.log(userData)
-})
+let storedData = localStorage.getItem('userData');
+let userData = JSON.parse(storedData);
+console.log(userData)
