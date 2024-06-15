@@ -1,6 +1,8 @@
 window.routes = {
     'estudiante': [
-        'students.html'
+        'students.html',
+        'history',
+        'history.html'
     ],
     'profesor': [
         'teachers.html',
@@ -39,7 +41,7 @@ const getJsonRoutes = (environment = 'local') => {
     }
 };
 
-const ROUTES = getJsonRoutes('remote'); //Cambiar esto a remote cuando se haga en main
+const ROUTES = getJsonRoutes('local'); //Cambiar esto a remote cuando se haga en main
 
 window.jsonRoutes = ROUTES; 
 
