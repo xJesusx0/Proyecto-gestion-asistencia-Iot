@@ -1,5 +1,8 @@
 try{
+  console.log(userData)
+
   if (userData.loggedIn === 'true') {
+    console.log(userData)
     let role = userData.role;
     window.location.href = window.routes[role][0];
   }
