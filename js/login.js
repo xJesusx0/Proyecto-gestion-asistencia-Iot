@@ -1,14 +1,12 @@
-
-
-try{
+try {
   console.log(userData)
   if (userData.loggedIn === 'true') {
     console.log(userData)
     let role = userData.role;
     window.location.href = window.routes[role][0];
   }
-}  catch (error) {
-  
+} catch (error) {
+
 }
 
 
@@ -45,14 +43,14 @@ const validarDatos = () => {
           alert(`Bienvenido de nuevo, ${username} 👋`)
 
           const userData = {
-            'username':username,
-            'role':selectedRole,
-            'loggedIn':'true',
-            'userId':element.id
+            'username': username,
+            'role': selectedRole,
+            'loggedIn': 'true',
+            'userId': element.id
 
           }
-          localStorage.setItem('userData',JSON.stringify(userData))
-          
+          localStorage.setItem('userData', JSON.stringify(userData))
+
           window.location.href = window.routes[selectedRole][0]
           return
         }
