@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const teacher = userData;
             // console.log(group, course);
 
-            document.getElementById('welcomeUser').innerHTML += ` ${teacher.username} 🌟`;
+            // document.getElementById('welcomeUser').innerHTML += ` ${teacher.username} 🌟`;
             document.getElementById('btnDesplegable').innerHTML = teacher.username
             document.getElementById('course-container').innerHTML += course.courseName
             document.getElementById('group-container').innerHTML += group.groupId
