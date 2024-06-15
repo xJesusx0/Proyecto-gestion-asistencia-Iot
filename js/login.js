@@ -1,13 +1,18 @@
-try {
-  console.log(userData)
-  if (userData.loggedIn === 'true') {
-    console.log(userData)
-    let role = userData.role;
-    window.location.href = window.routes[role][0];
-  }
-} catch (error) {
+window.addEventListener('pageshow', function(event) {
+  try {
+    let storedData = localStorage.getItem('userData');
+    let userData = JSON.parse(storedData);
+    console.log(userData);
 
-}
+    if (userData && userData.loggedIn === 'true') {
+      let role = userData.role;
+      window.location.href = window.routes[role][0];
+    }
+  } catch (error) {
+    console.error('Error al recuperar datos de localStorage:', error);
+  }
+});
+
 
 
 const validarDatos = () => {
