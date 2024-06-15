@@ -2,7 +2,9 @@ window.routes = {
     'estudiante': [
         'students.html',
         'history',
-        'history.html'
+        'history.html',
+        'justificacion',
+        'justificacion.html'
     ],
     'profesor': [
         'teachers.html',
