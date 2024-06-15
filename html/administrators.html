@@ -14,10 +14,10 @@
     <script src="../js/administrators.js"></script>
 
     <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="../css/administrators.css">
     <link rel="stylesheet" href="../css/modal.css">
     <link rel="stylesheet" href="../css/students.css">
     <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/administrators.css">
 
 </head>
 
@@ -38,8 +38,34 @@
             <h2 id="welcomeUser">Bienvenido,</h2>
         </div>
     </div>
+    
+    
+    <div class="container-formulario">
+        <form>
+            <h2>Registro Estudiantes</h2>
+            <label for="name-user">Nombre De Usuario<input type="text" name="name-user" id="name-user"></label>
+            <label for="document-id">No De Documento<input type="number" name="document-id" id="document-id"></label>
+            
+            <label>Grupos Disponibles</label>
+            <div class="checkbox-container">
+                <input type="checkbox" name="Grupo1" id="Grupo1" value="Grupo1">
+                <label for="Grupo1">Grupo1</label>
+            </div>
+            <div class="checkbox-container">
+                <input type="checkbox" name="Grupo2" id="Grupo2" value="Grupo2">
+                <label for="Grupo2">Grupo2</label>
+            </div>
+            <div class="checkbox-container">
+                <input type="checkbox" name="Grupo3" id="Grupo3" value="Grupo3">
+                <label for="Grupo3">Grupo3</label>
+            </div>
+            <input type="submit" class="submit-button" value="Agregar Estudiante">
+        </form>
+    </div>
+    <button id="btnToggle" onclick="alternarLista()">Mostrar lista de usuarios</button>
+
     <div class="containerTable">
-        <table>
+        <table id="tableUsers" class="hidden">
             <thead>
                 <tr>
                     <th>Nombre</th>
@@ -49,10 +75,11 @@
                 </tr>
             </thead>
             <tbody id="usersTableBody">
-                <!-- Aquí se generan las demás filas -->
+                
             </tbody>
         </table>
     </div>
+
     <div id="myModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="cerrarModal()">&times;</span>
@@ -60,22 +87,23 @@
             <div class="students-container"></div>
         </div>
     </div>
+    
+    <footer class="footer">
+        <div class="logo-container">
+            <img src="../img/logoiub.png" alt="Logo">
+        </div>
+        <div class="names-container">
+            <h3>Jesus Perea</h3>
+            <h3>Alberto Perez</h3>
+            <h3>Daniel Dussan</h3>
+        </div>
+        <div class="contact-container">
+            <h3>Contacto: </h3>
+            <h3>Bienestar@unibarranquilla.edu.co</h3>
+            <h3>Teléfono: +123456789</h3>
+        </div>
+    </footer>
     <script src="../js/modal.js"></script>
 </body>
-<footer class="footer">
-    <div class="logo-container">
-        <img src="../img/logoiub.png" alt="Logo">
-    </div>
-    <div class="names-container">
-        <h3>Jesus Perea</h3>
-        <h3>Alberto Perez</h3>
-        <h3>Daniel Dussan</h3>
-    </div>
-    <div class="contact-container">
-        <h3>Contacto: </h3>
-        <h3>Bienestar@unibarranquilla.edu.co</h3>
-        <h3>Teléfono: +123456789</h3>
-    </div>
-</footer>
 
 </html>

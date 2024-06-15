@@ -74,5 +74,16 @@ fetch('../json/administrators.json')
     
   })
 
+  function alternarLista() {
+    let table = document.getElementById('tableUsers');
+      if (table.classList.contains('hidden')) {
+          table.classList.remove('hidden');
+          document.getElementById('btnToggle').innerHTML = 'Ocultar lista de usuarios'
+        } else {
+          table.classList.add('hidden');
+          document.getElementById('btnToggle').innerHTML = 'Mostrar lista de usuarios'
+      }
+}
+
 
 
