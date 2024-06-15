@@ -1,6 +1,7 @@
 window.routes = {
     'estudiante': [
         'students.html',
+        'students',
         'history',
         'history.html',
         'justificacion',
@@ -9,7 +10,8 @@ window.routes = {
     'profesor': [
         'teachers.html',
         'teachers',
-        'students-list.html'
+        'students-list.html',
+        'students-list'
     ],
     'administrador': [
         'administrators.html'
