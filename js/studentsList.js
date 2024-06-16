@@ -62,21 +62,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (createdStudents.length !== 0) {
                 createdStudents.forEach(student => {
-                    const row = document.createElement('tr')
 
-                    const nameCell = document.createElement('td')
-                    nameCell.textContent = student.name
-                    row.appendChild(nameCell)
+                    if (student.groups.includes(group.groupId)) {
+                        const row = document.createElement('tr')
 
-                    const failsCell = document.createElement('td')
-                    failsCell.textContent = student.fails
-                    row.appendChild(failsCell)
+                        const nameCell = document.createElement('td')
+                        nameCell.textContent = student.name
+                        row.appendChild(nameCell)
 
-                    const totalCell = document.createElement('td')
-                    totalCell.textContent = 10
-                    row.appendChild(totalCell)
+                        const failsCell = document.createElement('td')
+                        failsCell.textContent = student.fails
+                        row.appendChild(failsCell)
 
-                    usersTableBody.appendChild(row)
+                        const totalCell = document.createElement('td')
+                        totalCell.textContent = 10
+                        row.appendChild(totalCell)
+
+                        usersTableBody.appendChild(row)
+
+                    }
+
                 })
             }
 
