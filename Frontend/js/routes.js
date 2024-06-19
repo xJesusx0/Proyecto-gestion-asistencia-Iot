@@ -32,13 +32,13 @@ const jsonLocalRoutes = {
 }
 
 const jsonRemoteRoutes = {
-    'usersData': 'https://raw.githubusercontent.com/xJesusx0/Actividad-paginas-web/main/json/users_data.json',
-    'studentsData': 'https://raw.githubusercontent.com/xJesusx0/Actividad-paginas-web/main/json/students.json',
-    'teachersData': 'https://raw.githubusercontent.com/xJesusx0/Actividad-paginas-web/main/json/teachers.json',
-    'adminsData': 'https://raw.githubusercontent.com/xJesusx0/Actividad-paginas-web/main/json/administrators.json',
-    'coursesData':'https://raw.githubusercontent.com/xJesusx0/Actividad-paginas-web/main/json/courses.json',
-    'failsData':'https://raw.githubusercontent.com/xJesusx0/Actividad-paginas-web/main/json/fails.json',
-    'attendancesData':'https://raw.githubusercontent.com/xJesusx0/Actividad-paginas-web/main/json/attendances.json'
+    'usersData': 'https://raw.githubusercontent.com/xJesusx0/Proyecto-gestion-asistencia-Iot/main/Frontend/json/users_data.json',
+    'studentsData': 'https://raw.githubusercontent.com/xJesusx0/Proyecto-gestion-asistencia-Iot/main/Frontend/json/students.json',
+    'teachersData': 'https://raw.githubusercontent.com/xJesusx0/Proyecto-gestion-asistencia-Iot/main/Frontend/json/teachers.json',
+    'adminsData': 'https://raw.githubusercontent.com/xJesusx0/Proyecto-gestion-asistencia-Iot/main/Frontend/json/administrators.json',
+    'coursesData':'https://raw.githubusercontent.com/xJesusx0/Proyecto-gestion-asistencia-Iot/main/Frontend/json/courses.json',
+    'failsData':'https://raw.githubusercontent.com/xJesusx0/Proyecto-gestion-asistencia-Iot/main/Frontend/json/fails.json',
+    'attendancesData':'https://raw.githubusercontent.com/xJesusx0/Proyecto-gestion-asistencia-Iot/main/Frontend/json/attendances.json'
 }
 
 
