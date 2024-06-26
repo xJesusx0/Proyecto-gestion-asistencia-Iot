@@ -11,7 +11,10 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
-    <script src="../js/routes.js"></script>
+    <script src="../js/config/config.js"></script>
+    <script src="../js/config/routes.js"></script>
+
+    <script src="../js/request.js"></script>
     <script src="../js/login.js"></script>
 
 </head>
@@ -31,7 +34,7 @@
                 <div>
                     <h2>Bienvenido</h2>
                 </div>
-                <form class="formulario">
+                <form id="login-form" class="formulario" method="post">
                     <input class="input-group" type="text" placeholder="Username" id="username" autocomplete="off"
                         required>
                     <input class="input-group" type="password" placeholder="Password" id="password" autocomplete="off"
@@ -44,7 +47,7 @@
                         <label for="admin"><input type="radio" name="role" value="administrador" id="admin">
                             Administrador</label>
                     </div>
-                    <input type="button" class="submit-button" value="Iniciar sesion" onclick="validarDatos()">
+                    <input type="button" class="submit-button" value="Iniciar sesion" onclick="validarLogin()">
                 </form>
             </div>
         </div>
