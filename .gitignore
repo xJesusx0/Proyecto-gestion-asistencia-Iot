@@ -1,2 +1,4 @@
 env
 __pycache__/
+Frontend/js/config/config.js
+Backend/app/config.py
