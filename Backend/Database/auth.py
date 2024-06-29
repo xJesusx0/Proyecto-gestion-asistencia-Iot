@@ -6,15 +6,9 @@ def validateLogin(mysql,cursor,user_data:dict):
     password = user_data['password']
     role = user_data['role']
 
-    roles_id = {
-        'estudiante':1,
-        'profesor':2,
-        'administrador':3
-    }
+    print(user_data)
 
-    role_id = roles_id[role]
-
-    cursor.execute('SELECT * FROM usuarios WHERE correo = %s AND contraseña = %s AND id_rol = %s',(username,password,role_id))
+    cursor.execute('SELECT * FROM usuarios WHERE correo = %s AND contraseña = %s ;',(username,password))
     response = cursor.fetchone()
 
     if response:
@@ -22,3 +16,8 @@ def validateLogin(mysql,cursor,user_data:dict):
 
     return None
 
+@handle_database_operations
+def get_roles(mysql,cursor,user_id:int):
+    cursor.execute('SELECT * FROM roles ;')
+    response = cursor.fetchone()
+    print(response)

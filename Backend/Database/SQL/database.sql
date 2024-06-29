@@ -1,11 +1,9 @@
--- Tabla para las facultades
 CREATE TABLE facultades (
   id_facultad INT AUTO_INCREMENT PRIMARY KEY,
   nombre VARCHAR(100),
   decano VARCHAR(100)
 );
 
--- Tabla para los programas académicos
 CREATE TABLE programas (
   id_programa INT AUTO_INCREMENT PRIMARY KEY,
   nombre VARCHAR(100),
@@ -16,63 +14,62 @@ CREATE TABLE programas (
   FOREIGN KEY (fkid_facultad) REFERENCES facultades(id_facultad)
 );
 
--- Tabla para los módulos o asignaturas
 CREATE TABLE modulos (
   id_modulo VARCHAR(100) PRIMARY KEY,
   nombre VARCHAR(100),
   creditos INT
 );
 
--- Tabla para los roles
+CREATE TABLE personas (
+  id INT PRIMARY KEY, 
+  correo VARCHAR(100) UNIQUE, 
+  nombres VARCHAR(100),
+  apellidos VARCHAR(100),
+  numero_telefonico VARCHAR(100)
+);
+
 CREATE TABLE roles (
   id_rol INT PRIMARY KEY AUTO_INCREMENT,
   nombre VARCHAR(100),
   descripcion VARCHAR(100)
 );
 
--- Tabla para las personas
-CREATE TABLE personas (
-    id INT PRIMARY KEY, -- Añadir AUTO_INCREMENT
-    correo VARCHAR(100) UNIQUE, -- El correo debe ser único
-    nombres VARCHAR(100),
-    apellidos VARCHAR(100),
-    numero_telefonico VARCHAR(100) -- Eliminar la coma final
-);
-
--- Tabla para los usuarios del sistema
 CREATE TABLE usuarios (
   id_usuario INT PRIMARY KEY,
-  correo VARCHAR(100) UNIQUE, -- Añadir UNIQUE para correo
+  correo VARCHAR(100) UNIQUE,
   contraseña VARCHAR(100),
-  id_rol INT, -- Cambiar a INT para coincidir con roles(id_rol)
   FOREIGN KEY (id_usuario) REFERENCES personas(id),
-  FOREIGN KEY (correo) REFERENCES personas(correo),
+  FOREIGN KEY (correo) REFERENCES personas(correo)
+);
+
+
+CREATE TABLE usuarios_roles (
+  id_usuario INT,
+  id_rol INT,
+  FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario),
   FOREIGN KEY (id_rol) REFERENCES roles(id_rol)
 );
 
--- Tabla para los profesores
 CREATE TABLE profesor (
   id_profesor INT PRIMARY KEY,
   especialidad VARCHAR(100),
   FOREIGN KEY (id_profesor) REFERENCES usuarios(id_usuario)
 );
 
--- Tabla para los estudiantes
 CREATE TABLE estudiante (
   id_estudiante INT PRIMARY KEY,
   id_programa INT,
   cuatrimestre INT,
+  FOREIGN KEY (id_estudiante) REFERENCES usuarios(id_usuario),
   FOREIGN KEY (id_programa) REFERENCES programas(id_programa)
 );
 
--- Tabla para los salones donde se dictan los grupos
 CREATE TABLE salones (
   id_salon INT PRIMARY KEY,
   sede VARCHAR(100),
   nombre VARCHAR(100)
 );
 
--- Tabla para los grupos de módulos
 CREATE TABLE grupo (
   id_grupo VARCHAR(100) PRIMARY KEY,
   id_modulo VARCHAR(100),
@@ -87,16 +84,13 @@ CREATE TABLE grupo (
   FOREIGN KEY (id_salon) REFERENCES salones(id_salon)
 );
 
--- Tabla para las matrículas de estudiantes en grupos
 CREATE TABLE matricula (
   id_grupo VARCHAR(100),
   id_estudiante INT,
-  PRIMARY KEY (id_grupo, id_estudiante),
   FOREIGN KEY (id_grupo) REFERENCES grupo(id_grupo),
   FOREIGN KEY (id_estudiante) REFERENCES estudiante(id_estudiante)
 );
 
--- Tabla para las asistencias de los estudiantes a los grupos
 CREATE TABLE asistencias (
   id_asistencia INT PRIMARY KEY,
   id_estudiante INT,
@@ -108,14 +102,12 @@ CREATE TABLE asistencias (
   FOREIGN KEY (id_grupo) REFERENCES grupo(id_grupo)
 );
 
--- Tabla para los tipos de inasistencia
 CREATE TABLE tipo_de_inasistencia (
   id_tipo INT PRIMARY KEY,
   nombre VARCHAR(100),
   descripcion VARCHAR(255)
 );
 
--- Tabla para las inasistencias de los estudiantes en los grupos
 CREATE TABLE inasistencia (
   id_inasistencia INT PRIMARY KEY,
   id_grupo VARCHAR(100),
@@ -126,6 +118,3 @@ CREATE TABLE inasistencia (
   FOREIGN KEY (id_estudiante) REFERENCES estudiante(id_estudiante),
   FOREIGN KEY (id_tipo) REFERENCES tipo_de_inasistencia(id_tipo)
 );
-
--- Restricciones adicionales
--- No hay restricciones adicionales para agregar en este momento.
