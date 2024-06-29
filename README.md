@@ -9,6 +9,8 @@ Este proyecto utiliza tecnología IoT para gestionar y monitorizar la asistencia
 
 ## Cómo poner en marcha el proyecto
 
+### Poner el marcha el frontend
+
 1. **Dirígete a la carpeta `htdocs` de XAMPP:**
    - En Linux:
      ```
@@ -25,9 +27,16 @@ Este proyecto utiliza tecnología IoT para gestionar y monitorizar la asistencia
    ```
 
 3. **Inicia XAMPP:**
-   - Abre el Panel de Control de XAMPP y enciende Apache y MySQL.
+   - Abre el Panel de Control de XAMPP y enciende Apache.
 
 4. **Dirígete a la siguiente ruta en tu navegador:**
    ```
    http://localhost/Proyecto-gestion-asistencia-Iot/Frontend/
+   ```
+
+### Poner en marcha el backend
+
+1. **Crear un entorno virtual en python:**
+   ```
+   Python3 -m venv env
    ```
