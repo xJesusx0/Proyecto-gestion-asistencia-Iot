@@ -33,6 +33,7 @@ const validarLogin = () => {
   // Datos que se enviaran en la peticion
   const baseUrl = config.baseUrl
   const url = `${baseUrl}/auth/login`
+
   const data = {
     'username': username,
     'password': password,
