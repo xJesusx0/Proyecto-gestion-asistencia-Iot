@@ -6,7 +6,7 @@ def validateLogin(mysql,cursor,user_data:dict):
     password = user_data['password']
     role = user_data['role']
 
-    cursor.execute('SELECT * FROM usuarios WHERE correo = %s AND contrasena = %s AND rol = %s',(username,password,role))
+    cursor.execute('SELECT * FROM usuarios WHERE correo = %s AND contraseña = %s AND rol = %s',(username,password,role))
     response = cursor.fetchone()
 
     if response:
