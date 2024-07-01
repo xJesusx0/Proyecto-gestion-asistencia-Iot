@@ -1,54 +1,52 @@
 const redirectToAttendancesList = (groupId) => {
-  
-  localStorage.setItem('groupData',groupId)
+  localStorage.setItem('groupData', groupId)
   window.location.href = 'history.html';
 }
+const id = userData.userId;
 
+request(window.jsonRoutes.studentsData)
+  .then(studentsData => {
+    console.log(studentsData)
+    let student = studentsData.filter(studentsData => studentsData.id_estudiante === id);
+    student = student[0]
+    document.getElementById('btnDesplegable').innerHTML = userData.nombres
+    document.getElementById('welcomeUser').innerHTML += ` ${userData.nombres} 🌟`
+    document.getElementById('program-container').innerHTML = `Programa: ${student.programa}`
+    document.getElementById('period-container').innerHTML = `Cuatrimestre: ${student.cuatrimestre} `
 
-fetch(window.jsonRoutes.studentsData)
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('No se pudo leer el archivo JSON')
-    }
+  });
+request(window.jsonRoutes.registrationsData)
+  .then(registrationsData => {
+    console.log(registrationsData)
+    const studentRegistrations = registrationsData.filter(registrations => registrations.id_estudiante === id);
+    
+    const cardsContainer = document.getElementById('cards-container');
+    
+    studentRegistrations.forEach(registration => {
+      const card = document.createElement('div')
+      card.classList.add('card');
 
-    return response.json();
+      const img = document.createElement('img');
+      img.classList.add('card-img-top');
+      img.setAttribute('src','../img/textura.jpg')
+      card.appendChild(img);
+
+      const cardBody = document.createElement('div');
+      cardBody.classList.add('card-body');
+      card.appendChild(cardBody)
+
+      const cardTitle = document.createElement('h5');
+      cardTitle.classList.add('card-title')
+      cardTitle.textContent = registration.modulo;
+      card.appendChild(cardTitle);
+
+      const button = document.createElement('input');
+      button.classList.add('btnCard');
+      button.setAttribute('onclick',`redirectToAttendancesList('${registration.id_grupo}'`)
+      button.setAttribute('type','button');
+      button.setAttribute('value','Ver historial')
+      card.appendChild(button)
+
+      cardsContainer.appendChild(card)
+    });
   })
-
-  .then(data => {
-
-    data = data['0']
-
-    const userId = userData.userId;
-    console.log(userData.username)
-
-    console.log(userId);
-    console.log(data);
-    student = data[userId];
-
-    console.log(student['name'])
-    document.getElementById('btnDesplegable').innerHTML = student['name']
-    document.getElementById('welcomeUser').innerHTML += ` ${student['name']} 🌟`
-    document.getElementById('program-container').innerHTML = `Programa: ${student['program']}`
-    document.getElementById('period-container').innerHTML =  `Cuatrimestre: ${student['period']} `
-    materias = student['courses']
-
-    botonValido = ``
-
-    for (let j = 0; j < materias.length; j++) {
-      // (materias[j].fails == 0) ? botonValido = `id="disabled-link" onclick="return false;"` : botonValido = ``
-      document.getElementById('pCards').innerHTML += `
-      <div class="card">
-        <img src="../img/textura.jpg" class="card-img-top" alt="Fondo Carta">
-        <div class="card-body">
-          <h5 class="card-title">${materias[j].course}</h5>
-          <p class="card-text">No de inasistencias: ${materias[j].fails}</p>
-          <input type="button" value="Ver historial" class="btnCard" onclick="redirectToAttendancesList('${materias[j].groupId}')">
-        </div>
-      </div>`
-
-    }
-
-  })
-
-
-
