@@ -23,9 +23,7 @@ CREATE TABLE modulos (
 CREATE TABLE personas (
   id INT PRIMARY KEY, 
   correo VARCHAR(100) UNIQUE, 
-  nombres VARCHAR(100),
-  apellidos VARCHAR(100),
-  numero_telefonico VARCHAR(100)
+
 );
 
 CREATE TABLE roles (
@@ -38,8 +36,9 @@ CREATE TABLE usuarios (
   id_usuario INT PRIMARY KEY,
   correo VARCHAR(100) UNIQUE,
   contraseña VARCHAR(100),
-  FOREIGN KEY (id_usuario) REFERENCES personas(id),
-  FOREIGN KEY (correo) REFERENCES personas(correo)
+  nombres VARCHAR(100),
+  apellidos VARCHAR(100),
+  numero_telefonico VARCHAR(100)
 );
 
 
