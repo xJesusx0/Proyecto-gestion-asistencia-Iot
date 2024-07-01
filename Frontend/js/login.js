@@ -13,7 +13,33 @@ window.addEventListener('pageshow', function(event) {
   }
 });
 
+const csvTextToJson = (csvText) => {
+  // Eliminar cualquier caracter de retorno de carro adicional que pueda interferir
+  const formattedCsv = csvText.replace(/\r/g, '');
 
+  // Separar las líneas del CSV
+  const lines = formattedCsv.split('\n');
+
+  // Obtener los encabezados (primera línea del CSV)
+  const headers = lines[0].split(',');
+
+  const jsonArray = [];
+
+  // Recorrer cada línea del CSV (empezando desde la segunda línea)
+  for (let i = 1; i < lines.length; i++) {
+    const json = {};
+    const currentLine = lines[i].split(',');
+
+    // Asignar cada valor al encabezado correspondiente
+    for (let j = 0; j < headers.length; j++) {
+      json[headers[j]] = currentLine[j];
+    }
+
+    jsonArray.push(json);
+  }
+
+  return (jsonArray);
+}
 
 const validarDatos = () => {
 
@@ -24,31 +50,33 @@ const validarDatos = () => {
       if (!response.ok) {
         throw new Error('No se pudo leer el archivo JSON')
       }
-      return response.json();
+      return response.text();
     })
 
     .then(data => {
-      let username = document.getElementById("username").value.toLowerCase()
-      username = username.replace(/\s+/g, '')
+      console.log(data)
+      const jsonData = csvTextToJson(data);
+      let correo = document.getElementById("username").value.toLowerCase()
+      correo = correo.replace(/\s+/g, '')
 
-      const password = document.getElementById("password").value
+      const contraseña = document.getElementById("password").value
       const selectedRole = document.querySelector('input[name="role"]:checked').value
+      console.log(selectedRole)
+      for (let i = 0; i < jsonData.length; i++) {
+        let element = jsonData[i];
 
-      for (let i = 0; i < data.length; i++) {
-        let element = data[i];
+        if (correo == element.correo && contraseña === element.contraseña) {
 
-        if (username == element.username && password === element.password) {
-
-          if (selectedRole !== element.role) {
+          if (selectedRole !== element.roles) {
             alert("Rol incorrecto")
             return
           }
           window.userId = element.id;
 
-          alert(`Bienvenido de nuevo, ${username} 👋`)
+          alert(`Bienvenido de nuevo, ${correo} 👋`)
 
           const userData = {
-            'username': username,
+            'correo': correo,
             'role': selectedRole,
             'loggedIn': 'true',
             'userId': element.id
