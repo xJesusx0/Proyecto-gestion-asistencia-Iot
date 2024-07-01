@@ -42,7 +42,7 @@ request(window.jsonRoutes.registrationsData)
 
       const button = document.createElement('input');
       button.classList.add('btnCard');
-      button.setAttribute('onclick',`redirectToAttendancesList('${registration.id_grupo}'`)
+      button.setAttribute('onclick',`redirectToAttendancesList('${registration.id_grupo}')`)
       button.setAttribute('type','button');
       button.setAttribute('value','Ver historial')
       card.appendChild(button)
