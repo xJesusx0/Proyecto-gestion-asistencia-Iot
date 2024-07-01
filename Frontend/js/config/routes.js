@@ -35,7 +35,8 @@ const baseUrl = 'https://docs.google.com/spreadsheets/d/1k1gh7R8FOLGJsYTvn7idyoL
 
 const jsonRemoteRoutes = {
     'usersData': `${baseUrl}0`,
-    'studentsData': 'https://raw.githubusercontent.com/xJesusx0/Proyecto-gestion-asistencia-Iot/main/Frontend/json/students.json',
+    'registrationsData':`${baseUrl}1547156438`,
+    'studentsData': `${baseUrl}1878527769`,
     'teachersData': 'https://raw.githubusercontent.com/xJesusx0/Proyecto-gestion-asistencia-Iot/main/Frontend/json/teachers.json',
     'adminsData': 'https://raw.githubusercontent.com/xJesusx0/Proyecto-gestion-asistencia-Iot/main/Frontend/json/administrators.json',
     'coursesData':'https://raw.githubusercontent.com/xJesusx0/Proyecto-gestion-asistencia-Iot/main/Frontend/json/courses.json',
