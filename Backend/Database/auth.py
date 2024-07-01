@@ -4,7 +4,6 @@ from Database import handle_database_operations
 def validateLogin(mysql,cursor,user_data:dict):
     username = user_data['username']
     password = user_data['password']
-    role = user_data['role']
 
     print(user_data)
 
