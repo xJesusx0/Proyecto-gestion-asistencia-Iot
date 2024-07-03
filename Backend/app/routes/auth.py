@@ -5,7 +5,7 @@ from flask import session
 from flask import current_app
 from ..config import valid_token
 
-from Database.auth import validateLogin
+from Database.auth import *
 
 auth_bp = Blueprint('auth',__name__,url_prefix='/auth')
 
@@ -21,10 +21,17 @@ def login():
 
     print(request_body)
     response = validateLogin(auth_bp.mysql,request_body)
+
+    if response == None:
+        return jsonify({
+            'error':'datos incorrectos'
+        }),401
+
+    roles = get_roles(auth_bp.mysql,response['id_usuario'])
+    data = {
+        'user-data':response,
+        'roles':roles
+    }
+
+    return jsonify(data),200
     
-    if response != None:
-        return jsonify(response),200
-    
-    return jsonify({
-        'error':'datos incorrectos'
-    }),401
