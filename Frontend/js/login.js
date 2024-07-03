@@ -10,7 +10,7 @@ window.addEventListener('pageshow', function (event) {
     }
 
     const loginForm = document.getElementById('login-form');
-    loginForm.setAttribute('action',`${config.baseUrl}/auth/login`)
+    loginForm.setAttribute('action', `${config.baseUrl}/auth/login`)
 
   } catch (error) {
     console.error('Error al recuperar datos de localStorage:', error);
@@ -18,29 +18,22 @@ window.addEventListener('pageshow', function (event) {
 });
 
 const validarLogin = () => {
-  
   const username = document.getElementById("username").value.toLowerCase().trim();
   const password = document.getElementById("password").value;
-  const selectedRole = document.querySelector('input[name="role"]:checked').value;
 
-  // Verificar si los campos están vacíos
-  if (!username || !password || !selectedRole) {
+  // Validar que ambos campos estén completos y realizar más validaciones si es necesario
+  if (!username || !password) {
     alert('Por favor completa todos los campos.');
     return;
   }
 
-
-  // Datos que se enviaran en la peticion
-  const baseUrl = config.baseUrl
-  const url = `${baseUrl}/auth/login`
+  const baseUrl = config.baseUrl;
+  const url = `${baseUrl}/auth/login`;
 
   const data = {
     'username': username,
     'password': password,
-    'role': selectedRole
   };
-
-  console.log(selectedRole)
 
   request('POST', url, data)
     .then(data => {
@@ -51,23 +44,28 @@ const validarLogin = () => {
         return;
       }
 
+      const roles = data['roles'];
 
-      const userData = {
-        'username': username,
-        'role': selectedRole,
-        'loggedIn': 'true',
-        'userId': data['id_usuario']
-
+      if (roles.length !== 1) {
+        // Lógica para manejar múltiples roles, podría incluir la apertura de un modal
       }
+
+      const role = roles[0]['nombre'].toLowerCase();
+      console.log(role);
+      const userData = {
+        'names': data['user-data']['nombres'],
+        'role': role,
+        'loggedIn': 'true',
+        'userId': data['user-data']['id_usuario']
+      };
 
       alert(`Bienvenido de nuevo, ${username} 👋`);
 
-      localStorage.setItem('userData', JSON.stringify(userData))
-      window.location.href = window.routes[selectedRole][0]
-      return
+      localStorage.setItem('userData', JSON.stringify(userData));
+      window.location.href = window.routes[role][0];
     })
-
     .catch(error => {
-      console.error('Error:',error);
+      console.error('Error:', error);
+      alert('Ocurrió un error al intentar iniciar sesión. Por favor, inténtalo de nuevo más tarde.');
     });
-}
+};
