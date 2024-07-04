@@ -7,11 +7,11 @@ CREATE TABLE facultades (
 CREATE TABLE programas (
   id_programa INT AUTO_INCREMENT PRIMARY KEY,
   nombre VARCHAR(100),
-  fkid_facultad INT,
+  id_facultad INT,
   lugar_de_oferta VARCHAR(100),
   modalidad VARCHAR(100),
   duracion INT,
-  FOREIGN KEY (fkid_facultad) REFERENCES facultades(id_facultad)
+  FOREIGN KEY (id_facultad) REFERENCES facultades(id_facultad)
 );
 
 CREATE TABLE modulos (
@@ -72,12 +72,14 @@ CREATE TABLE salones (
 CREATE TABLE grupo (
   id_grupo VARCHAR(100) PRIMARY KEY,
   id_modulo VARCHAR(100),
+  id_programa,
   id_profesor INT,
   id_salon INT,
   periodo VARCHAR(100),
   dia_semana VARCHAR(50),
   hora_inicio TIME,
   hora_fin TIME,
+  FOREIGN KEY (id_programa) REFERENCES programas(id_programa),
   FOREIGN KEY (id_modulo) REFERENCES modulos(id_modulo),
   FOREIGN KEY (id_profesor) REFERENCES profesor(id_profesor),
   FOREIGN KEY (id_salon) REFERENCES salones(id_salon)
