@@ -17,11 +17,22 @@ window.addEventListener('pageshow', function (event) {
   }
 });
 
+const confirmarRol = () => {
+  const selectedRole = document.querySelector('input[name="role"]:checked').value.toLowerCase();
+
+  const userData = JSON.parse(localStorage.getItem('userData'));
+  userData.role = selectedRole;
+
+  localStorage.setItem('userData', JSON.stringify(userData));
+  
+  alert(`Bienvenido de nuevo, ${userData.names} 👋`);
+  window.location.href = window.routes[selectedRole][0];
+}
+
 const validarLogin = () => {
   const username = document.getElementById("username").value.toLowerCase().trim();
   const password = document.getElementById("password").value;
 
-  // Validar que ambos campos estén completos y realizar más validaciones si es necesario
   if (!username || !password) {
     alert('Por favor completa todos los campos.');
     return;
@@ -47,25 +58,54 @@ const validarLogin = () => {
       const roles = data['roles'];
 
       if (roles.length !== 1) {
-        // Lógica para manejar múltiples roles, podría incluir la apertura de un modal
+        const rolesList = document.getElementById('roles-list');
+
+        roles.forEach(element => {
+          const roleElement = document.createElement('input')
+          roleElement.setAttribute('type', 'radio')
+          roleElement.setAttribute('value', element['nombre']);
+          roleElement.setAttribute('id', element['nombre']);
+
+          roleElement.setAttribute('name', 'role')
+          rolesList.appendChild(roleElement)
+
+          const label = document.createElement('label')
+          label.setAttribute('for', element['nombre'])
+          label.textContent = element['nombre']
+          rolesList.appendChild(label)
+          rolesList.appendChild(document.createElement('br'));
+
+        });
+
+        showModal()
+
+        const userData = {
+          'names': data['user-data']['nombres'],
+          'loggedIn': 'true',
+          'userId': data['user-data']['id_usuario']
+        };
+
+        localStorage.setItem('userData', JSON.stringify(userData));
+
+      } else {
+
+        const role = roles[0]['nombre'].toLowerCase();
+        const userData = {
+          'names': data['user-data']['nombres'],
+          'role': role,
+          'loggedIn': 'true',
+          'userId': data['user-data']['id_usuario']
+        };
+
+        alert(`Bienvenido de nuevo, ${userData.names} 👋`);
+
+        localStorage.setItem('userData', JSON.stringify(userData));
+        window.location.href = window.routes[role][0];
       }
 
-      const role = roles[0]['nombre'].toLowerCase();
-      console.log(role);
-      const userData = {
-        'names': data['user-data']['nombres'],
-        'role': role,
-        'loggedIn': 'true',
-        'userId': data['user-data']['id_usuario']
-      };
-
-      alert(`Bienvenido de nuevo, ${username} 👋`);
-
-      localStorage.setItem('userData', JSON.stringify(userData));
-      window.location.href = window.routes[role][0];
     })
     .catch(error => {
       console.error('Error:', error);
-      alert('Ocurrió un error al intentar iniciar sesión. Por favor, inténtalo de nuevo más tarde.');
+      alert('Datos incorrectos.');
     });
 };
