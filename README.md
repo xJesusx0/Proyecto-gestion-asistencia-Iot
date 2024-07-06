@@ -1,5 +1,3 @@
-Claro, aquí tienes el README en texto plano:
-
 # Proyecto de Gestión de Asistencia mediante IoT
 
 Este proyecto utiliza tecnología IoT para gestionar y monitorizar la asistencia de manera eficiente.
