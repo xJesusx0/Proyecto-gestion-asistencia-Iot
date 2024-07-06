@@ -17,16 +17,27 @@ window.addEventListener('pageshow', function (event) {
   }
 });
 
-const confirmarRol = () => {
+const confirmRole = () => {
   const selectedRole = document.querySelector('input[name="role"]:checked').value.toLowerCase();
 
   const userData = JSON.parse(localStorage.getItem('userData'));
   userData.role = selectedRole;
 
   localStorage.setItem('userData', JSON.stringify(userData));
-  
+
+  const url = `${config.baseUrl}/auth/set-role`
+  const data = {
+    'role':selectedRole
+  }
+  request('POST',url,data)
+  .then(response => {
+    if (response['error']){
+      alert('Ha ocurrido un error al iniciar sesion');
+      return;
+    }
   alert(`Bienvenido de nuevo, ${userData.names} 👋`);
   window.location.href = window.routes[selectedRole][0];
+  })
 }
 
 const validarLogin = () => {
@@ -59,7 +70,7 @@ const validarLogin = () => {
 
       if (roles.length !== 1) {
         const rolesList = document.getElementById('roles-list');
-
+        rolesList.innerHTML = '';
         roles.forEach(element => {
           const roleElement = document.createElement('input')
           roleElement.setAttribute('type', 'radio')
@@ -106,6 +117,6 @@ const validarLogin = () => {
     })
     .catch(error => {
       console.error('Error:', error);
-      alert('Datos incorrectos.');
+      alert('Ha ocurrido un error al iniciar sesion.');
     });
 };
