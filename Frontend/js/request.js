@@ -7,7 +7,8 @@ const request = async (method, url, data = null) => {
 
     const requestOptions = {
         method: method,
-        headers: headers
+        headers: headers,
+        credentials: 'include'  // Incluir credenciales para enviar cookies
     };
 
     if (method !== 'GET' && data) {
