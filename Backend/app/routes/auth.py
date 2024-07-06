@@ -87,22 +87,17 @@ def validate_role():
         ]
     }
 
-    # Obtener el parámetro 'url' de la consulta GET
     url = request.args.get('url')
     
-    # Validar que 'url' esté presente en la solicitud
     if not url:
         return jsonify({'error': 'Se esperaba un parámetro "url" en la solicitud'}), 400
 
-    # Obtener el rol actual de la sesión
     role = session.get('role')
 
-    # Validar que 'role' esté presente en la sesión y que sea válido
     if not role or role not in routes:
         return jsonify({'valid-role': False, 'valid-route': False}), 401
 
-    # Verificar si la 'url' solicitada está en las rutas permitidas para el rol actual
     valid_route = url in routes[role]
-    valid_role = True  # Si llegamos aquí, el rol siempre será válido si está en 'routes'
+    valid_role = True  
 
     return jsonify({'valid-role': valid_role, 'valid-route': valid_route})
