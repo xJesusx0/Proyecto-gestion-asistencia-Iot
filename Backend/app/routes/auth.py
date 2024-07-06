@@ -46,18 +46,18 @@ def set_role():
 
     if request_body['role'] :
         session['role'] = request_body['role']
-        return jsonify({
-            'response':'Operacion exitosa'
-        }),200
+        return jsonify({'response':'Operacion exitosa'}),200
     
-    return jsonify({
-        'error':'se esperaba un rol'
-    })
+    return jsonify({'error':'se esperaba un rol'}),401
 
 @auth_bp.route('/validate-login',methods=['GET'])
 def validate_login():
     print(session)
     logged_in = session.get('logged-in',False)
-    return jsonify({
-            'response':logged_in
-        })
+    return jsonify({'response':logged_in})
+
+@auth_bp.route('/logout',methods = ['POST'])
+def logout():
+    session.clear()  
+    print(session)
+    return jsonify({'response':'sesion limpiada correctamente'}),200
