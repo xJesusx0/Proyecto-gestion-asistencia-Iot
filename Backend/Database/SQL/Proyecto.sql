@@ -1,12 +1,12 @@
 CREATE TABLE facultades (
   id_facultad INT AUTO_INCREMENT PRIMARY KEY,
-  nombre VARCHAR(100),
+  nombre VARCHAR(100) NOT NULL,
   decano VARCHAR(100)
 );
 
 CREATE TABLE programas (
   id_programa INT AUTO_INCREMENT PRIMARY KEY,
-  nombre VARCHAR(100),
+  nombre VARCHAR(100) NOT NULL,
   fkid_facultad INT,
   lugar_de_oferta VARCHAR(100),
   modalidad VARCHAR(100),
@@ -16,41 +16,41 @@ CREATE TABLE programas (
 
 CREATE TABLE modulos (
   id_modulo VARCHAR(100) PRIMARY KEY,
-  nombre VARCHAR(100),
+  nombre VARCHAR(100) NOT NULL,
   creditos INT
 );
 
 CREATE TABLE roles (
   id_rol INT PRIMARY KEY AUTO_INCREMENT,
-  nombre VARCHAR(100),
+  nombre VARCHAR(100) NOT NULL,
   descripcion VARCHAR(100)
 );
 
 CREATE TABLE usuarios (
-  id_usuario INT PRIMARY KEY,
-  correo VARCHAR(100) UNIQUE,
-  contraseña VARCHAR(100),
-  nombres VARCHAR(100),
-  apellidos VARCHAR(100),
+  id_usuario VARCHAR(40) PRIMARY KEY,
+  correo VARCHAR(100) UNIQUE NOT NULL,
+  contraseña VARCHAR(100) NOT NULL,
+  nombres VARCHAR(100) NOT NULL,
+  apellidos VARCHAR(100) NOT NULL,
   numero_telefonico VARCHAR(100)
 );
 
-
 CREATE TABLE usuarios_roles (
-  id_usuario INT,
+  id_usuario VARCHAR(40),
   id_rol INT,
+  PRIMARY KEY (id_usuario, id_rol),
   FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario),
   FOREIGN KEY (id_rol) REFERENCES roles(id_rol)
 );
 
 CREATE TABLE profesor (
-  id_profesor INT PRIMARY KEY,
+  id_profesor VARCHAR(40) PRIMARY KEY,
   especialidad VARCHAR(100),
   FOREIGN KEY (id_profesor) REFERENCES usuarios(id_usuario)
 );
 
 CREATE TABLE estudiante (
-  id_estudiante INT PRIMARY KEY,
+  id_estudiante VARCHAR(40) PRIMARY KEY,
   id_programa INT,
   cuatrimestre INT,
   FOREIGN KEY (id_estudiante) REFERENCES usuarios(id_usuario),
@@ -58,15 +58,15 @@ CREATE TABLE estudiante (
 );
 
 CREATE TABLE salones (
-  id_salon INT PRIMARY KEY,
-  sede VARCHAR(100),
-  nombre VARCHAR(100)
+  id_salon INT AUTO_INCREMENT PRIMARY KEY,
+  sede VARCHAR(100) NOT NULL,
+  nombre VARCHAR(100) NOT NULL
 );
 
 CREATE TABLE grupo (
   id_grupo VARCHAR(100) PRIMARY KEY,
   id_modulo VARCHAR(100),
-  id_profesor INT,
+  id_profesor VARCHAR(40),
   id_salon INT,
   periodo VARCHAR(100),
   dia_semana VARCHAR(50),
@@ -79,14 +79,15 @@ CREATE TABLE grupo (
 
 CREATE TABLE matricula (
   id_grupo VARCHAR(100),
-  id_estudiante INT,
+  id_estudiante VARCHAR(40),
+  PRIMARY KEY (id_grupo, id_estudiante),
   FOREIGN KEY (id_grupo) REFERENCES grupo(id_grupo),
   FOREIGN KEY (id_estudiante) REFERENCES estudiante(id_estudiante)
 );
 
 CREATE TABLE asistencias (
-  id_asistencia INT PRIMARY KEY,
-  id_estudiante INT,
+  id_asistencia INT AUTO_INCREMENT PRIMARY KEY,
+  id_estudiante VARCHAR(40),
   id_grupo VARCHAR(100),
   fecha DATE,
   hora_llegada TIME,
@@ -96,15 +97,15 @@ CREATE TABLE asistencias (
 );
 
 CREATE TABLE tipo_de_inasistencia (
-  id_tipo INT PRIMARY KEY,
-  nombre VARCHAR(100),
+  id_tipo INT AUTO_INCREMENT PRIMARY KEY,
+  nombre VARCHAR(100) NOT NULL,
   descripcion VARCHAR(255)
 );
 
 CREATE TABLE inasistencia (
-  id_inasistencia INT PRIMARY KEY,
+  id_inasistencia INT AUTO_INCREMENT PRIMARY KEY,
   id_grupo VARCHAR(100),
-  id_estudiante INT,
+  id_estudiante VARCHAR(40),
   fecha DATE,
   id_tipo INT,
   FOREIGN KEY (id_grupo) REFERENCES grupo(id_grupo),
