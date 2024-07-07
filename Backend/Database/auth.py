@@ -1,5 +1,7 @@
 from Database import handle_database_operations
 
+from Backend.Database.encrypt import decrypt
+
 @handle_database_operations
 def validateLogin(mysql,cursor,user_data:dict):
     username = user_data['username']
@@ -7,11 +9,14 @@ def validateLogin(mysql,cursor,user_data:dict):
 
     print(user_data)
 
-    cursor.execute('SELECT * FROM usuarios WHERE correo = %s AND contraseña = %s ;',(username,password))
+    cursor.execute('SELECT * FROM usuarios WHERE correo = %s;',(username,))
     response = cursor.fetchone()
-
+    print('res',response)
     if response:
-        return response
+        stored_password_hash = response['contraseña']
+        if decrypt(password,stored_password_hash):
+            return response
+
 
     return None
 
