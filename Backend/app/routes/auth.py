@@ -83,7 +83,9 @@ def validate_role():
             'administrators.html',
             'administrators',
             'add-student.html',
-            'add-student'
+            'add-student',
+            'upload-and-register',
+            'upload-and-register.html'
         ]
     }
 
