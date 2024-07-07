@@ -7,7 +7,7 @@ from flask_mysqldb import MySQL
 from app.config import Config
 
 from app.routes.auth import auth_bp
-
+from app.routes.administrators import admin_bp
 app = Flask(__name__)
 
 app.config.from_object(Config)
@@ -21,3 +21,4 @@ mysql = MySQL(app)
 
 auth_bp.mysql = mysql
 app.register_blueprint(auth_bp)
+app.register_blueprint(admin_bp)

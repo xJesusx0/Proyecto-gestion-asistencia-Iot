@@ -1,6 +1,6 @@
 from Database import handle_database_operations
 
-from Backend.Database.encrypt import decrypt
+from Database.encrypt import decrypt
 
 @handle_database_operations
 def validateLogin(mysql,cursor,user_data:dict):
