@@ -14,7 +14,9 @@ app.config.from_object(Config)
 app.secret_key = 'secret'
 
 Session(app)
-CORS(app,supports_credentials=True)
+CORS(app, supports_credentials=True, resources={
+    r"*": {"origins": ["http://localhost", "http://192.168.1.12"]}
+})
 mysql = MySQL(app)
 
 auth_bp.mysql = mysql

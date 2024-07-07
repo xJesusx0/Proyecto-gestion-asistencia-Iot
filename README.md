@@ -52,6 +52,12 @@ Este proyecto utiliza tecnología IoT para gestionar y monitorizar la asistencia
    - Abre el Panel de Control de XAMPP y enciende Apache.
 
 5. **Accede al frontend en tu navegador:**
+
+   > :warning: **Si pusiste tu ip en el archivo de configuracion** Debes acceder de la siguiente manera
+   ```bash
+   http://tu-ip/Proyecto-gestion-asistencia-Iot/Frontend/
+   ```
+
    ```bash
    http://localhost/Proyecto-gestion-asistencia-Iot/Frontend/
    ```
@@ -90,7 +96,7 @@ Este proyecto utiliza tecnología IoT para gestionar y monitorizar la asistencia
    - Importar la base de datos:
      - Desde el cliente MySQL en Linux:
       ```sql
-      SOURCE /opt/lampp/htdocs/Proyecto-gestion-asistencia-Iot/Backend/Database/database.sql;
+      SOURCE /opt/lampp/htdocs/Proyecto-gestion-asistencia-Iot/Backend/Database/Proyecto.sql;
       ```
 
 5. **Crear el archivo `config.py`:**
@@ -107,7 +113,7 @@ Este proyecto utiliza tecnología IoT para gestionar y monitorizar la asistencia
          MYSQL_HOST = 'localhost'
          MYSQL_USER = 'root'
          MYSQL_PASSWORD = 'contraseña'  # Tu contraseña de MySQL
-         MYSQL_DB = 'proyecto'
+         MYSQL_DB = 'proyecto' #nombre de la base de datos
          SECRET_KEY = 'secret'
 
       SECRET_TOKEN = 'token'  # Poner el token secreto
@@ -118,5 +124,5 @@ Este proyecto utiliza tecnología IoT para gestionar y monitorizar la asistencia
 
 6. **Iniciar el backend:**
    ```bash
-   python3 Proyecto-gestion-asistencia-Iot/Backend/run.py
+   python3 Backend/run.py
    ```
