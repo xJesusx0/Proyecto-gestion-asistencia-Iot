@@ -10,9 +10,11 @@ const sendFile = () => {
     const url = `${config.baseUrl}/admin/upload-and-register-users`
     const formData = new FormData();
     const fileField = document.getElementById('file');
+    const selectedTable = document.getElementById('tables').value;
+    console.log(selectedTable)
 
     formData.append('csvFile', fileField.files[0]);
-
+    formData.append('table',selectedTable)
     fetch(url, {
         headers: {'token': config.SECRET_TOKEN},
         method: 'POST',

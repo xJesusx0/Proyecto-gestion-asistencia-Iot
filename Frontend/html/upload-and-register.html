@@ -48,6 +48,12 @@
                             <div class="form-group">
                                 <label for="file">Selecciona un archivo CSV:</label>
                                 <input type="file" class="form-control-file" id="file" name="file">
+
+                                <select name="tables" id="tables">
+                                    <option value="usuarios">usuarios</option>
+                                    <option value="estudiantes">estudiantes</option>
+                                    <option value="profesores">profesores</option>
+                                </select>
                             </div>
                             <br>
                             <input type="button" class="btn btn-primary" value="Subir archivo" onclick="sendFile()" >
