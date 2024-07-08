@@ -20,5 +20,6 @@ CORS(app, supports_credentials=True, resources={
 mysql = MySQL(app)
 
 auth_bp.mysql = mysql
+admin_bp.mysql = mysql
 app.register_blueprint(auth_bp)
 app.register_blueprint(admin_bp)
