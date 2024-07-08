@@ -18,10 +18,10 @@ def handle_database_operations(func: callable) -> callable:
 
 def valid_table(tablename:str):
     tables = {
-        'usuarios':{'id_usuario','correo','contraseña','nombres','apellidos','numero_telefonico'},
+        'usuarios':{'id_usuario','correo','contraseña','nombres','apellidos','numero_telefonico','id_rol'},
         'estudiantes':{'id_estudiante','programa'},
-        'profesores':{}
-        }
+        'profesores':{'id_profesor','especialidad'}
+    }
     
 
     fields = tables.get(tablename,None)
