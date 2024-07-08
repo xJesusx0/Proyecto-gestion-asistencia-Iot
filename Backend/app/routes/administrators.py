@@ -7,13 +7,20 @@ import csv
 
 from Database.administrators import insert_by_csv
 from Database.encrypt import encrypt
+from Database import valid_table
+
 admin_bp = Blueprint('admin',__name__,url_prefix='/admin')
 
-def valid_csv(stream):
+def valid_csv(stream,table:set):
+    stream.seek(0)
+
     csv_to_dict = csv.DictReader(stream)
-        
-    expected_keys = {'id_usuario','correo','contraseña','nombres','apellidos','numero_telefonico'}
-    valid_list = all(expected_keys.issubset(element.keys()) for element in csv_to_dict)
+
+    first_row = next(csv_to_dict, None)
+    if first_row is None:
+        return False  
+
+    valid_list = all(table.issubset(element.keys()) for element in csv_to_dict)
     return valid_list
 
 @admin_bp.route('/upload-and-register-users', methods=['POST'])
@@ -26,14 +33,23 @@ def upload_and_register_users():
     if file.filename == '':
         return jsonify({'response': 'No se selecciono un archivo'}), 400
 
+    table = request.form.get('table')
+    if not table:
+        return jsonify({'response': 'Se esperaba una tabla'}), 400
+
+    columns = valid_table(table)
+
+    if columns == None:
+        return jsonify({'response':'Columnas invalidas'}),400
+
     if file and file.filename.endswith('.csv'):
         stream = io.StringIO(file.stream.read().decode("UTF8"), newline=None)
-        valid_list = valid_csv(stream)
-
+        valid_list = valid_csv(stream,columns)
+        print(valid_list)
         stream.seek(0)
 
         csv_file = csv.reader(stream)
-
+        print(f'xd {csv_file}')
         if valid_list != True:
             return jsonify({'response':'Headers o columnas invalidas'}),400
         
