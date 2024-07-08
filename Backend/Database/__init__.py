@@ -15,3 +15,18 @@ def handle_database_operations(func: callable) -> callable:
         finally:
             cursor.close()
     return wrapper
+
+def valid_table(tablename:str):
+    tables = {
+        'usuarios':{'id_usuario','correo','contraseña','nombres','apellidos','numero_telefonico'},
+        'estudiantes':{'id_estudiante','programa'},
+        'profesores':{}
+        }
+    
+
+    fields = tables.get(tablename,None)
+
+    if fields != None:
+        return fields
+    
+    return None
