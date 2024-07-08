@@ -42,32 +42,46 @@ def upload_and_register_users():
     if columns == None:
         return jsonify({'response':'Columnas invalidas'}),400
 
-    if file and file.filename.endswith('.csv'):
-        stream = io.StringIO(file.stream.read().decode("UTF8"), newline=None)
-        valid_list = valid_csv(stream,columns)
-        print(valid_list)
-        stream.seek(0)
-
-        csv_file = csv.reader(stream)
-        print(f'xd {csv_file}')
-        if valid_list != True:
-            return jsonify({'response':'Headers o columnas invalidas'}),400
+    if not file or not file.filename.endswith('.csv'):
+        return jsonify({'response': 'Solo se aceptan archivos .csv'}), 400
         
-        first_row = True
-        users_list = []
-        for row in csv_file:
-            if first_row:
-                first_row = False
-                continue
-            
-            row[2] = encrypt(row[2])
-            users_list.append(tuple(row))
+    stream = io.StringIO(file.stream.read().decode("UTF8"), newline=None)
+    valid_list = valid_csv(stream,columns)
 
-        print(users_list)
-        res = insert_by_csv(admin_bp.mysql,users_list)
+    stream.seek(0)
+
+    csv_file = csv.reader(stream)
+
+    if valid_list != True:
+        return jsonify({'response':'Headers o columnas inválidas en el archivo CSV'}),400
+    
+    first_row = True
+    users_list = []
+
+    if table == 'usuarios':
+        users_roles = []
+
+    for row in csv_file:
+        if first_row:
+            first_row = False
+            continue
+        
+        if table == 'usuarios':
+            users_roles.append((row[0],row[-1]))
+            del row[-1]
+
+        row[2] = encrypt(row[2])
+        users_list.append(tuple(row))
+
+    res = insert_by_csv(admin_bp.mysql,users_list,table)
+    if res:
+        return jsonify({'response':str(res)}),400
+
+    if table == 'usuarios_roles':
+        res = insert_by_csv(admin_bp.mysql,users_roles,'usuarios_roles')
         if res:
             return jsonify({'response':str(res)}),400
 
-        return jsonify({'response': 'ok', 'data': users_list}), 200
+    return jsonify({'response': 'ok', 'data': users_list}), 200
 
-    return jsonify({'response': 'Solo se aceptan archivos .csv'}), 400
+    
