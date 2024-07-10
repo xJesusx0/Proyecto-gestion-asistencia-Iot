@@ -77,7 +77,7 @@ def upload_and_register_users():
     if res:
         return jsonify({'response':str(res)}),400
 
-    if table == 'usuarios_roles':
+    if table == 'usuarios':
         res = insert_by_csv(admin_bp.mysql,users_roles,'usuarios_roles')
         if res:
             return jsonify({'response':str(res)}),400
