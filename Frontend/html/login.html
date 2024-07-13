@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,7 +22,6 @@
 </head>
 
 <body>
-
     <div id="modal" class="modal" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -44,53 +42,39 @@
             </div>
         </div>
     </div>
-    <div class="container-total">
-        <nav class="navbar">
-            <div class="navbar-logo"><img class="logoiub" src="../img/logoiubLetras.png" alt=""></div>
-            <a href="../index.html">
-                <button class="navbar-nav">Regresar</button>
-            </a>
-        </nav>
-
-        <div class="contenedor-login">
-            <div class="contenido-formulario">
-                <div>
-                    <h2>Bienvenido</h2>
-                </div>
-                <form id="login-form" class="formulario" method="post">
-                    <input class="input-group" type="text" placeholder="Username" id="username" autocomplete="off"
-                        required>
-                    <input class="input-group" type="password" placeholder="Password" id="password" autocomplete="off"
-                        required>
-                    <div class="radio-container">
-                        <label for="student"><input type="radio" name="role" value="estudiante" id="student">
-                            Estudiante</label><br>
-                        <label for="teacher"><input type="radio" name="role" value="profesor" id="teacher">
-                            Profesor</label><br>
-                        <label for="admin"><input type="radio" name="role" value="administrador" id="admin">
-                            Administrador</label>
-                    </div>
-                    <input type="button" class="submit-button" value="Iniciar sesion" onclick="validarLogin()">
-                </form>
-            </div>
+    <nav class="navbar bg-body-secondary">
+        <div class="container-fluid">
+            <img src="../img/logoiubLetras.png" alt="" class=" w-25 h-25" style="width:150px; height:40px;">
+            <a href="../index.html"> <button class="btn btn-primary px-4 py-2" type="submit">Regresar</button> </a>
         </div>
-        <footer class="footer">
-            <div class="logo-container">
-                <img src="../img/logoiub.png" alt="Logo">
-            </div>
-            <div class="names-container">
-                <h3>Jesus Perea</h3>
-                <h3>Alberto Perez</h3>
-                <h3>Daniel Dussan</h3>
-            </div>
-            <div class="contact-container">
-                <h3>Contacto: </h3>
-                <h3>Bienestar@unibarranquilla.edu.co</h3>
-                <h3>Teléfono: +123456789</h3>
-            </div>
-        </footer>
+    </nav>
+
+    
+<div class="d-flex ">
+    <div class="mt-5 shadow p-3 mb-5 bg-body rounded py-5 px-5  mx-auto">
+
+        <div class="mb-5"> <h3>¡Ingresa a tu cuenta!</h3></div>
+
+
+            <form id="login-form" class="formulario" method="post">
+                <div class="mb-3">
+                <label for="username" class="form-label">Email</label>
+                <input type="email" class="form-control" name="form_email" id="username" aria-describedby="emailHelp" >
+                </div>
+
+                <div class="mb-3">
+                <label for="password" class="form-label" style= "width: 200px;">Password</label>
+                <input type="password" class="form-control" name="form_passw" id="password">
+                </div>
+            
+                <button type="submit" class="btn btn-primary ms-4 " name="btn_iniciar" style= "width: 200px;" >Iniciar Sesion</button>
+            </form>
+
+
 
     </div>
-</body>
+</div>
 
+
+</body>
 </html>
