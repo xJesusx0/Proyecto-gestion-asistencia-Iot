@@ -1,54 +1,50 @@
 const redirectToAttendancesList = (groupId) => {
-  
   localStorage.setItem('groupData',groupId)
   window.location.href = 'history.html';
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+  const url = `${config.baseUrl}/students/get-modules`;
+  console.log(userData)
 
-fetch(window.jsonRoutes.studentsData)
+  document.getElementById('btnDesplegable').innerHTML = userData['names']
+
+  document.getElementById('welcomeUser').innerHTML += ` ${userData['names']} 🌟`
+
+  request('GET',url)
   .then(response => {
-    if (!response.ok) {
-      throw new Error('No se pudo leer el archivo JSON')
-    }
+    console.log(response);
 
-    return response.json();
+    const cardContainer = document.getElementById('cards-container');
+    
+    response.forEach(module => {
+      const card = document.createElement('div');
+      card.classList.add('card');
+
+      const img = document.createElement('img');
+      img.classList.add('img-fluid');
+      img.setAttribute('src','../img/textura.jpg');
+      card.appendChild(img);
+
+      const cardTitle = document.createElement('div');
+      cardTitle.classList.add('card-title');
+      cardTitle.innerHTML = module['nombre'];
+      card.appendChild(cardTitle);
+
+      const cardBody = document.createElement('div');
+      cardBody.classList.add('card-body');
+      cardBody.innerHTML = module['id_modulo']
+      card.appendChild(cardBody)
+
+      const button = document.createElement('input')
+      button.setAttribute('type','button');
+      button.setAttribute('value','Ver historial')
+      button.classList.add('btn')
+      button.classList.add('btn-primary')
+      card.appendChild(button)
+
+      cardContainer.appendChild(card)
+    });
   })
 
-  .then(data => {
-
-    data = data['0']
-
-    const userId = userData.userId;
-    console.log(userData.username)
-
-    console.log(userId);
-    console.log(data);
-    student = data[userId];
-
-    console.log(student['name'])
-    document.getElementById('btnDesplegable').innerHTML = student['name']
-    document.getElementById('welcomeUser').innerHTML += ` ${student['name']} 🌟`
-    document.getElementById('program-container').innerHTML = `Programa: ${student['program']}`
-    document.getElementById('period-container').innerHTML =  `Cuatrimestre: ${student['period']} `
-    materias = student['courses']
-
-    botonValido = ``
-
-    for (let j = 0; j < materias.length; j++) {
-      // (materias[j].fails == 0) ? botonValido = `id="disabled-link" onclick="return false;"` : botonValido = ``
-      document.getElementById('pCards').innerHTML += `
-      <div class="card">
-        <img src="../img/textura.jpg" class="card-img-top" alt="Fondo Carta">
-        <div class="card-body">
-          <h5 class="card-title">${materias[j].course}</h5>
-          <p class="card-text">No de inasistencias: ${materias[j].fails}</p>
-          <input type="button" value="Ver historial" class="btnCard" onclick="redirectToAttendancesList('${materias[j].groupId}')">
-        </div>
-      </div>`
-
-    }
-
-  })
-
-
-
+})
