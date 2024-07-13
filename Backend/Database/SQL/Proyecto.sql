@@ -112,3 +112,10 @@ CREATE TABLE inasistencia (
   FOREIGN KEY (id_estudiante) REFERENCES estudiante(id_estudiante),
   FOREIGN KEY (id_tipo) REFERENCES tipo_de_inasistencia(id_tipo)
 );
+
+CREATE TABLE justificaciones (
+  id_justificacion INT PRIMARY KEY,
+  ruta_archivo VARCHAR(255),
+  id_inasistencia INT,
+  FOREIGN KEY (id_inasistencia) REFERENCES inasistencia(id_inasistencia)
+);
