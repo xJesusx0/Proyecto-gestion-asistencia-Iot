@@ -6,23 +6,26 @@ const request = async (method, url, data = null) => {
     };
 
     const requestOptions = {
+        url: url,
         method: method,
         headers: headers,
-        credentials: 'include'  // Incluir credenciales para enviar cookies
+        withCredentials: true
     };
 
     if (method !== 'GET' && data) {
-        requestOptions.body = JSON.stringify(data);
+        requestOptions.data = data;
     }
 
     try {
-        const response = await fetch(url, requestOptions);
-        const responseData = await response.json();
-        if (!response.ok) {
-            throw new Error(`Error ${response.status}: ${responseData.message || response.statusText}`);
-        }
-        return responseData;
+        const response = await axios(requestOptions);
+        return response.data;
     } catch (error) {
-        throw new Error(`Request failed: ${error.message}`);
+        if (error.response) {
+            throw new Error(`Error ${error.response.status}: ${error.response.data.message || error.response.statusText}`);
+        } else if (error.request) {
+            throw new Error('No response received from server');
+        } else {
+            throw new Error(`Request failed: ${error.message}`);
+        }
     }
 };
