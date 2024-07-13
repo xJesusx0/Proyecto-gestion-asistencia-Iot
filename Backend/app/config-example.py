@@ -6,6 +6,7 @@ class Config:
     MYSQL_PASSWORD = 'contraseña'
     MYSQL_DB = 'proyecto'
     SECRET_KEY = 'secret'
+    IP = '127.0.0.1' # Tu ip
 
 SECRET_TOKEN = 'token'
 

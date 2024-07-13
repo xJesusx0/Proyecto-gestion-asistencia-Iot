@@ -1,8 +1,7 @@
 from flask import Flask
 from flask_cors import CORS
 from flask_session import Session
-from flask import make_response
-
+import os
 from flask_mysqldb import MySQL
 from app.config import Config
 
@@ -15,7 +14,7 @@ app.secret_key = 'secret'
 
 Session(app)
 CORS(app, supports_credentials=True, resources={
-    r"*": {"origins": ["http://localhost", "http://192.168.1.12"]}
+    r"*": {"origins": ["http://localhost", f"http://{Config.IP}"]}
 })
 mysql = MySQL(app)
 
