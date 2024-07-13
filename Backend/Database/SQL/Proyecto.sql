@@ -45,14 +45,13 @@ CREATE TABLE usuarios_roles (
 
 CREATE TABLE profesor (
   id_profesor VARCHAR(40) PRIMARY KEY,
-  especialidad VARCHAR(100),
+  -- especialidad VARCHAR(100),
   FOREIGN KEY (id_profesor) REFERENCES usuarios(id_usuario)
 );
 
 CREATE TABLE estudiante (
   id_estudiante VARCHAR(40) PRIMARY KEY,
   id_programa INT,
-  cuatrimestre INT,
   FOREIGN KEY (id_estudiante) REFERENCES usuarios(id_usuario),
   FOREIGN KEY (id_programa) REFERENCES programas(id_programa)
 );
@@ -80,7 +79,8 @@ CREATE TABLE grupo (
 CREATE TABLE matricula (
   id_grupo VARCHAR(100),
   id_estudiante VARCHAR(40),
-  PRIMARY KEY (id_grupo, id_estudiante),
+  periodo VARCHAR(40),
+  PRIMARY KEY (id_grupo, id_estudiante,periodo),
   FOREIGN KEY (id_grupo) REFERENCES grupo(id_grupo),
   FOREIGN KEY (id_estudiante) REFERENCES estudiante(id_estudiante)
 );
