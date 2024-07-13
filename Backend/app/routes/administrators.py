@@ -5,6 +5,8 @@ from flask import session
 import io
 import csv
 
+from ..config import token_required
+
 from Database.administrators import insert_by_csv
 from Database.encrypt import encrypt
 from Database import valid_table
@@ -24,6 +26,7 @@ def valid_csv(stream,table:set):
     return valid_list
 
 @admin_bp.route('/upload-and-register-users', methods=['POST'])
+@token_required
 def upload_and_register_users():
     if 'csvFile' not in request.files:
         return jsonify({'response': 'Se esperaba un archivo'}), 400

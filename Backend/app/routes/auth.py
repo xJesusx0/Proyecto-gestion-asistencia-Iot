@@ -1,35 +1,22 @@
-from flask import Blueprint
-from flask import request
-from flask import jsonify
-from flask import session
-
-from ..config import valid_token
-
+from flask import Blueprint, request, jsonify, session
+from ..config import token_required
 from Database.auth import *
 
-auth_bp = Blueprint('auth',__name__,url_prefix='/auth')
+auth_bp = Blueprint('auth', __name__, url_prefix='/auth')
 
-@auth_bp.route('/login', methods = ['POST'])
+@auth_bp.route('/login', methods=['POST'])
 def login():
-
-    token = request.headers.get('token')
-
-    if not valid_token(token):
-        return jsonify({'message': 'Invalid token'}), 401
-
     request_body = request.get_json()
 
-    response = validateLogin(auth_bp.mysql,request_body)
+    response = validateLogin(auth_bp.mysql, request_body)
 
-    if response == None:
-        return jsonify({
-            'error':'datos incorrectos'
-        }),401
+    if response is None:
+        return jsonify({'error': 'Datos incorrectos'}), 401
 
-    roles = get_roles(auth_bp.mysql,response['id_usuario'])
+    roles = get_roles(auth_bp.mysql, response['id_usuario'])
     data = {
-        'user-data':response,
-        'roles':roles
+        'user-data': response,
+        'roles': roles
     }
     
     session['logged-in'] = True
@@ -38,31 +25,35 @@ def login():
         session['role'] = roles[0]['nombre'].lower()
 
     print(session)
-    return jsonify(data),200
+    return jsonify(data), 200
 
-@auth_bp.route('/set-role',methods = ['POST']) 
+@auth_bp.route('/set-role', methods=['POST'])
+@token_required
 def set_role():
     request_body = request.get_json()
 
-    if request_body['role'] :
-        session['role'] = request_body['role']
-        return jsonify({'response':'Operacion exitosa'}),200
+    if 'role' in request_body:
+        session['role'] = request_body['role'].lower()
+        return jsonify({'response': 'Operación exitosa'}), 200
     
-    return jsonify({'error':'se esperaba un rol'}),401
+    return jsonify({'error': 'Se esperaba un rol'}), 400
 
-@auth_bp.route('/validate-login',methods=['GET'])
+@auth_bp.route('/validate-login', methods=['GET'])
+@token_required
 def validate_login():
     print(session)
-    logged_in = session.get('logged-in',False)
-    return jsonify({'response':logged_in})
+    logged_in = session.get('logged-in', False)
+    return jsonify({'response': logged_in})
 
-@auth_bp.route('/logout',methods = ['POST'])
+@auth_bp.route('/logout', methods=['POST'])
+@token_required
 def logout():
     session.clear()  
     print(session)
-    return jsonify({'response':'sesion limpiada correctamente'}),200
+    return jsonify({'response': 'Sesión limpiada correctamente'}), 200
 
 @auth_bp.route('/validate-role', methods=['GET'])
+@token_required
 def validate_role():
     routes = {
         'estudiante': [
