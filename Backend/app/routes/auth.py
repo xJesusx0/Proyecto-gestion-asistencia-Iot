@@ -1,6 +1,7 @@
 from flask import Blueprint, request, jsonify, session
 from ..config import token_required
 from Database.auth import *
+from . import web_routes
 
 auth_bp = Blueprint('auth', __name__, url_prefix='/auth')
 
@@ -32,6 +33,9 @@ def login():
 def set_role():
     request_body = request.get_json()
 
+    if 'role' in session:
+        return jsonify({'error':'Ya tienes un rol'})
+
     if 'role' in request_body:
         session['role'] = request_body['role'].lower()
         return jsonify({'response': 'Operación exitosa'}), 200
@@ -54,31 +58,7 @@ def logout():
 
 @auth_bp.route('/validate-role', methods=['GET'])
 @token_required
-def validate_role():
-    routes = {
-        'estudiante': [
-            'students.html',
-            'students',
-            'history',
-            'history.html',
-            'justificacion',
-            'justificacion.html'
-        ],
-        'profesor': [
-            'teachers.html',
-            'teachers',
-            'students-list.html',
-            'students-list'
-        ],
-        'administrador': [
-            'administrators.html',
-            'administrators',
-            'add-student.html',
-            'add-student',
-            'upload-and-register',
-            'upload-and-register.html'
-        ]
-    }
+def validate_role():    
 
     url = request.args.get('url')
     
@@ -87,10 +67,10 @@ def validate_role():
 
     role = session.get('role')
 
-    if not role or role not in routes:
+    if not role or role not in web_routes:
         return jsonify({'valid-role': False, 'valid-route': False}), 401
 
-    valid_route = url in routes[role]
+    valid_route = url in web_routes[role]
     valid_role = True  
 
     return jsonify({'valid-role': valid_role, 'valid-route': valid_route})
