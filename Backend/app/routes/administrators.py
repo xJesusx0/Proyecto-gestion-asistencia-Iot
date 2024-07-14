@@ -5,9 +5,9 @@ from flask import session
 import io
 import csv
 
-from ..config import token_required
+from ..config import *
 
-from Database.administrators import insert_by_csv
+from Database.administrators import *
 from Database.encrypt import encrypt
 from Database import valid_table
 
@@ -25,8 +25,21 @@ def valid_csv(stream,table:set):
     valid_list = all(table.issubset(element.keys()) for element in csv_to_dict)
     return valid_list
 
+@admin_bp.route('/get-users')
+@token_required
+@valid_login
+@valid_role('get-users')
+def get_users():
+    print(session)
+    users = get_all_users(admin_bp.mysql)
+    if not users:
+        return jsonify({'error':'Ha ocurrido un error'})
+    return jsonify(users),200
+
 @admin_bp.route('/upload-and-register-users', methods=['POST'])
 @token_required
+@valid_login
+@valid_role('upload-and-register-users')
 def upload_and_register_users():
     if 'csvFile' not in request.files:
         return jsonify({'response': 'Se esperaba un archivo'}), 400
