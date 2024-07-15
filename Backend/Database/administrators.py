@@ -9,6 +9,12 @@ def get_all_users(mysql,cursor):
     return response
 
 @handle_database_operations
+def get_user(mysql,cursor,user_id):
+    cursor.execute('SELECT id_usuario, correo, nombres, apellidos, numero_telefonico FROM usuarios WHERE id_usuario = %s',(user_id,))
+    response = cursor.fetchall()
+    return response
+
+@handle_database_operations
 def insert_by_csv(mysql,cursor,users_list:list,tablename:str):
     print(tablename)
 
