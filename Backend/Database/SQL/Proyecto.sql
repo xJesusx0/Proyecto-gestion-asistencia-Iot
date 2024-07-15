@@ -63,7 +63,7 @@ CREATE TABLE salones (
 );
 
 CREATE TABLE grupo (
-  id_grupo VARCHAR(100) PRIMARY KEY,
+  id_grupo VARCHAR(100),
   id_modulo VARCHAR(100),
   id_profesor VARCHAR(40),
   id_salon INT,
@@ -71,10 +71,12 @@ CREATE TABLE grupo (
   dia_semana VARCHAR(50),
   hora_inicio TIME,
   hora_fin TIME,
+  PRIMARY KEY (id_grupo, id_modulo, periodo),
   FOREIGN KEY (id_modulo) REFERENCES modulos(id_modulo),
   FOREIGN KEY (id_profesor) REFERENCES profesor(id_profesor),
   FOREIGN KEY (id_salon) REFERENCES salones(id_salon)
 );
+
 
 CREATE TABLE matricula (
   id_grupo VARCHAR(100),
