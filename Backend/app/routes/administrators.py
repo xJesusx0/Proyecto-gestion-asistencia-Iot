@@ -4,12 +4,15 @@ from flask import jsonify
 from flask import session
 import io
 import csv
-
+import json
 from ..config import *
 
 from Database.administrators import *
 from Database.encrypt import encrypt
-from Database import valid_table
+from Database import valid_table,TimedeltaEncoder
+from Database.auth import get_roles
+from Database.students import get_groups_by_students_id
+from Database.teachers import get_groups_by_teachers_id
 
 admin_bp = Blueprint('admin',__name__,url_prefix='/admin')
 
@@ -35,6 +38,43 @@ def get_users():
     if not users:
         return jsonify({'error':'Ha ocurrido un error'})
     return jsonify(users),200
+
+@admin_bp.route('/get-user-data')
+@token_required
+@valid_login
+@valid_role('get-user-data')
+def get_user_info():
+    try:
+        user_id = request.args.get('id')
+
+        if not user_id:
+            return jsonify({'error': 'No se proporcionó un id de usuario'}), 400
+
+        user_info = get_user(admin_bp.mysql, user_id)
+        user_roles = get_roles(admin_bp.mysql, user_id)
+
+        if not user_info or not user_roles:
+            return jsonify({'error': 'Ha ocurrido un error al obtener la información'}), 404
+
+        roles = [role['id_rol'] for role in user_roles]
+        groups = []
+
+        if 3 in roles:
+            groups = get_groups_by_students_id(admin_bp.mysql, user_id)
+        elif 2 in roles:
+            groups = get_groups_by_teachers_id(admin_bp.mysql, user_id)
+
+        groups_json = json.dumps(groups, cls=TimedeltaEncoder)
+        groups_json = json.loads(groups_json)
+
+        return jsonify({
+            'user_info': user_info,
+            'user_roles': user_roles,
+            'groups': groups_json
+        }), 200
+
+    except Exception as e:
+        return jsonify({'error': f'Ha ocurrido un error: {str(e)}'}), 500
 
 @admin_bp.route('/upload-and-register-users', methods=['POST'])
 @token_required
@@ -100,4 +140,3 @@ def upload_and_register_users():
 
     return jsonify({'response': 'ok', 'data': users_list}), 200
 
-    

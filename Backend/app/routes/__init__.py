@@ -19,7 +19,11 @@ web_routes = {
         'add-student.html',
         'add-student',
         'upload-and-register',
-        'upload-and-register.html'
+        'upload-and-register.html',
+        'users-list.html',
+        'users-list',
+        'user-info',
+        'user-info.html'
     ]
 }
 
@@ -35,5 +39,6 @@ api_routes = {
         'add-student',
         'upload-and-register-users',
         'get-users',
+        'get-user-data',
     ]
 }
