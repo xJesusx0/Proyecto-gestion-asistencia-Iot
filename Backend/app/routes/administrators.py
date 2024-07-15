@@ -1,10 +1,12 @@
+import io
+import csv
+import json
+
 from flask import Blueprint
 from flask import request
 from flask import jsonify
 from flask import session
-import io
-import csv
-import json
+
 from ..config import *
 
 from Database.administrators import *
@@ -12,7 +14,7 @@ from Database.encrypt import encrypt
 from Database import valid_table,TimedeltaEncoder
 from Database.auth import get_roles
 from Database.students import get_groups_by_students_id
-from Database.teachers import get_groups_by_teachers_id
+from Database.teachers import get_groups_by_teachers_id,get_all_teachers
 
 admin_bp = Blueprint('admin',__name__,url_prefix='/admin')
 
@@ -75,6 +77,32 @@ def get_user_info():
 
     except Exception as e:
         return jsonify({'error': f'Ha ocurrido un error: {str(e)}'}), 500
+
+
+@admin_bp.route('/get-modules')
+@token_required
+@valid_login
+@valid_role('get-modules')
+def get_modules():
+    modules = get_all_modules(admin_bp.mysql)
+    return jsonify(modules)
+
+@admin_bp.route('/get-teachers')
+@token_required
+@valid_login
+@valid_role('get-teachers')
+def get_teachers():
+    teachers = get_all_teachers(admin_bp.mysql)
+    return jsonify(teachers),200
+
+@admin_bp.route('/get-classrooms')
+@token_required
+@valid_login
+@valid_role('get-classrooms')
+def get_classrooms():
+    classrooms = get_all_classrooms(admin_bp.mysql)
+    return jsonify(classrooms),200
+
 
 @admin_bp.route('/upload-and-register-users', methods=['POST'])
 @token_required
