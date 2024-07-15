@@ -1,5 +1,7 @@
 from functools import wraps
 from MySQLdb.cursors import DictCursor
+import json
+from datetime import timedelta
 
 def handle_database_operations(func: callable) -> callable:
     @wraps(func)
@@ -30,3 +32,9 @@ def valid_table(tablename:str):
         return fields
     
     return None
+
+class TimedeltaEncoder(json.JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, timedelta):
+            return str(obj)
+        return super().default(obj)
