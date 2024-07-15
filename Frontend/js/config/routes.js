@@ -17,7 +17,9 @@ window.routes = {
         'administrators.html',
         'administrators',
         'add-student.html',
-        'add-student'
+        'add-student',
+        'user-info',
+        'user-info.html'
     ]
 }
 
