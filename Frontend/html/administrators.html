@@ -14,14 +14,11 @@
     <script src="../js/logout.js"></script>
     <script src="../js/validarLogin.js"></script>
     <script src="../js/validarRoles.js"></script>
-    <script src="../js/administrators/administrators.js"></script>
+    <script src="../js/logout.js"></script>
 
     <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="../css/modal.css">
-    <link rel="stylesheet" href="../css/students.css">
-    <link rel="stylesheet" href="../css/footer.css">
-    <link rel="stylesheet" href="../css/administrators.css">
-
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
+    <script src="../bootstrap/js/bootstrap.js"></script>
 </head>
 
 <body>
@@ -29,43 +26,24 @@
         <div>
             <img class="logoiub" src="../img/logoiubLetras.png" alt="LogoIUB">
         </div>
-        <div class="menuDesplegable">
-            <button id="btnDesplegable" class="dropbtn"></button>
-            <div class="dropdown-content">
-                <a onclick="logout()">Cerrar sesión</a>
-            </div>
-        </div>
+        <button onclick="logout()" class="btn btn-primary">Cerrar sesion</button>
+
     </nav>
+    <div class="container">
+        <div class="nav-item">
+            <a href="upload-and-register.html">Agregar usuarios via archivo csv</a>
+        </div>
+        <div class="nav-item">
+            <a href="users-list.html">Ver lista de usuarios</a>
+        </div>
+        <div class="nav-item"></div>
+        <div class="nav-item"></div>
+    </div>
     <div class="welcome">
         <div>
             <h2 id="welcomeUser">Bienvenido,</h2>
         </div>
     </div>
-
-    <a href="upload-and-register.html">Agregar usuarios via archivo csv</a>
-
-    <div class="buttons-container">
-        <button id="btnToggle" onclick="alternarLista()">Ocultar lista de usuarios</button>
-        <a id="btnToggle" href="add-student.html">Agregar un estudiante</a>
-    </div>
-
-
-    <div class="containerTable">
-        <table id="tableUsers">
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Rol</th>
-                    <th>Contraseña</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody id="usersTableBody">
-                
-            </tbody>
-        </table>
-    </div>
-
     
     <footer class="footer">
         <div class="logo-container">
