@@ -1,6 +1,6 @@
 const config = {
     serverIp: 'localhost',  // Poner tu IP
-    serverPort: '5000',
+    serverPort: '4000',
     SECRET_TOKEN: 'token'
 };
 
