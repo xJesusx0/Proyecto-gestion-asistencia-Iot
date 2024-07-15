@@ -15,6 +15,18 @@ def get_user(mysql,cursor,user_id):
     return response
 
 @handle_database_operations
+def get_all_modules(mysql,cursor):
+    cursor.execute('SELECT * FROM modulos')
+    response = cursor.fetchall()
+    return response
+
+@handle_database_operations
+def get_all_classrooms(mysql,cursor):
+    cursor.execute('SELECT * FROM salones')
+    response = cursor.fetchall()
+    return response
+
+@handle_database_operations
 def insert_by_csv(mysql,cursor,users_list:list,tablename:str):
     print(tablename)
 
