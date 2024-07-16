@@ -6,6 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Administrador</title>
 
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
+
+    <!-- Bootstrap JavaScript -->
+    <script src="../bootstrap/js/bootstrap.js"></script>
+
+    <!-- Axios and other scripts -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="../js/request.js"></script>
     <script src="../js/getUserData.js"></script>
@@ -16,89 +23,100 @@
     <script src="../js/validarRoles.js"></script>
     <script src="../js/administrators/create-group.js"></script>
 
-    <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
-    <script src="../bootstrap/js/bootstrap.js"></script>
+    <!-- Custom Styles -->
+    <style>
+        .navbar-brand img {
+            max-height: 40px;
+            width: auto;
+        }
+    </style>
 </head>
-<style>
-    .navbar-brand img {
-        max-height: 40px;
-        width: auto;
-    }
-</style>
+
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
             <a class="navbar-brand" href="#">
                 <img class="logoiub" src="../img/logoiubLetras.png" alt="LogoIUB">
             </a>
-            <button onclick="logout()" class="btn btn-primary ml-auto">Cerrar sesión</button>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav ms-auto">
+                    <a href="administrators.html" class="nav-item nav-link btn btn-outline-primary">Inicio</a>
+                    <a href="users-list.html" class="nav-item nav-link btn btn-outline-primary">Ver lista de usuarios</a>
+                </div>
+                <button onclick="logout()" class="btn btn-primary ml-3">Cerrar sesión</button>
+            </div>
         </div>
     </nav>
-    <nav class="navbar navbar-expand-lg">
-        <div class="container">
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                    <a href="upload-and-register.html" class="nav-item nav-link text-primary">Agregar usuarios via archivo CSV</a>
-                    <a href="users-list.html" class="nav-item nav-link text-primary">Ver lista de usuarios</a>
-                    <a href="create-group.html" class="nav-item nav-link text-primary">Crear un grupo</a>
+    
+    <!-- Formulario para Crear Grupo -->
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header bg-primary text-light">
+                        <h2 class="mb-0">Crear Grupo</h2>
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <div class="mb-3">
+                                <label for="group-id" class="form-label">ID del Grupo</label>
+                                <input type="text" class="form-control" id="group-id" placeholder="Ingrese el ID del Grupo">
+                            </div>
+                            <div class="mb-3">
+                                <label for="period" class="form-label">Periodo</label>
+                                <input type="text" class="form-control" id="period" placeholder="Ingrese el Periodo">
+                            </div>
+                            <div class="mb-3">
+                                <label for="weekday" class="form-label">Día de la Semana</label>
+                                <select class="form-select" id="weekday" name="weekday">
+                                    <option value="lunes">Lunes</option>
+                                    <option value="martes">Martes</option>
+                                    <option value="miércoles">Miércoles</option>
+                                    <option value="jueves">Jueves</option>
+                                    <option value="viernes">Viernes</option>
+                                    <option value="sábado">Sábado</option>
+                                    <option value="domingo">Domingo</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="teachers" class="form-label">Profesor</label>
+                                <select class="form-select" id="teachers" name="teachers">
+                                    <!-- Opciones generadas dinámicamente -->
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="modules" class="form-label">Módulo</label>
+                                <select class="form-select" id="modules" name="modules">
+                                    <!-- Opciones generadas dinámicamente -->
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="classrooms" class="form-label">Salón</label>
+                                <select class="form-select" id="classrooms" name="classrooms">
+                                    <!-- Opciones generadas dinámicamente -->
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="start-time" class="form-label">Hora de Inicio</label>
+                                <input type="time" class="form-control" id="start-time" name="start-time">
+                            </div>
+                            <div class="mb-3">
+                                <label for="end-time" class="form-label">Hora de Finalización</label>
+                                <input type="time" class="form-control" id="end-time" name="end-time">
+                            </div>
+                            <button type="button" class="btn btn-primary" onclick="createGroup()">Crear Grupo</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </nav>
-    <div class="container mt-5">
-        <h2 class="mb-4">Crear Grupo</h2>
-        <form>
-            <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="group-id" placeholder="ID del Grupo">
-                <label for="group-id">ID del Grupo</label>
-            </div>
-            <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="period" placeholder="Periodo">
-                <label for="period"> Periodo</label>
-            </div>
-            <div class="form-floating mb-3">
-                <select class="form-select" id="weekday" name="weekday" aria-label="Día de la Semana">
-                    <option value="lunes">Lunes</option>
-                    <option value="martes">Martes</option>
-                    <option value="miércoles">Miércoles</option>
-                    <option value="jueves">Jueves</option>
-                    <option value="viernes">Viernes</option>
-                    <option value="sábado">Sábado</option>
-                    <option value="domingo">Domingo</option>
-                </select>
-                <label for="weekday">Día de la Semana</label>
-            </div>
-            <div class="form-floating mb-3">
-                <select class="form-select" id="teachers" name="teachers" aria-label="Profesor">
-                    <!-- Opciones generadas dinámicamente -->
-                </select>
-                <label for="teachers">Profesor</label>
-            </div>
-            <div class="form-floating mb-3">
-                <select class="form-select" id="modules" name="modules" aria-label="Módulo">
-                    <!-- Opciones generadas dinámicamente -->
-                </select>
-                <label for="modules">Módulo</label>
-            </div>
-            <div class="form-floating mb-3">
-                <select class="form-select" id="classrooms" name="classrooms" aria-label="Salón">
-                    <!-- Opciones generadas dinámicamente -->
-                </select>
-                <label for="classrooms">Salón</label>
-            </div>
-            <div class="form-floating mb-3">
-                <input type="time" class="form-control" id="start-time" name="start-time" placeholder="Hora de Inicio">
-                <label for="start-time">Hora de Inicio</label>
-            </div>
-            <div class="form-floating mb-3">
-                <input type="time" class="form-control" id="end-time" name="end-time" placeholder="Hora de Finalización">
-                <label for="end-time">Hora de Finalización</label>
-            </div>
-            <button type="button" class="btn btn-primary mt-4" onclick="createGroup()">Crear Grupo</button>
-        </form>
     </div>
 
+    <!-- Footer -->
     <footer class="footer mt-4 bg-light">
         <div class="container">
             <div class="row">
@@ -124,5 +142,7 @@
             </div>
         </div>
     </footer>
+
+</body>
 
 </html>
