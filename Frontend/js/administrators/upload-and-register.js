@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     form.setAttribute('action', `${config.baseUrl}/admin/upload-and-register-users`)
 })
 
-const sendFile = async () => {
+const sendFile = () => {
     const url = `${config.baseUrl}/admin/upload-and-register-users`
     const formData = new FormData();
     const fileField = document.getElementById('file');
@@ -15,22 +15,23 @@ const sendFile = async () => {
 
     formData.append('csvFile', fileField.files[0]);
     formData.append('table',selectedTable)
-    try{
-        const response = await axios.post(url, formData, {
-            headers : {
-                'token':config.SECRET_TOKEN,
-                'Content-Type':'multipart/form-data'
-            }
-        });
-
-        const data = response.data;
-        if (data.response === 'ok') {
-            alert('Archivo subido correctamente');
-        } else {
-            alert(data.response);
-            console.log(data);
+    fetch(url, {
+        headers: {'token': config.SECRET_TOKEN},
+        method: 'POST',
+        body: formData,
+        credentials: 'include'
+    })
+    .then(response => response.json())
+    .then(data => {
+        if(data['response'] === 'ok'){
+            alert('Archivo subido correctamente')
+            return;
         }
-    } catch(error) {
+
+        alert(data['response'])
+        console.log(data)
+    })
+    .catch(error => {
         console.error('Error:', error);
-    };
+    });
 }
