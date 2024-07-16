@@ -27,13 +27,13 @@ def get_all_classrooms(mysql,cursor):
     return response
 
 @handle_database_operations
-def insert_by_csv(mysql,cursor,users_list:list,tablename:str):
+def insert_by_csv(mysql,cursor,users_list:tuple,tablename:str):
     print(tablename)
 
     querys = {
         'usuarios':'INSERT INTO usuarios (id_usuario,correo,contraseña, nombres, apellidos,numero_telefonico) VALUES (%s,%s,%s,%s,%s,%s)',
-        'estudiantes': 'INSERT INTO estudiante (id_estudiante, id_programa, cuatrimestre) VALUES (%s, %s, %s)',
-        'profesores': 'INSERT INTO profesor (id_profesor, especialidad) VALUES (%s, %s)',
+        'estudiante': 'INSERT INTO estudiante (id_estudiante, id_programa, cuatrimestre) VALUES (%s, %s, %s)',
+        'profesor': 'INSERT INTO profesor (id_profesor) VALUES (%s)',
         'usuarios_roles': 'INSERT INTO usuarios_roles (id_usuario, id_rol) VALUES (%s, %s)'
 
     }

@@ -22,7 +22,7 @@ def valid_table(tablename:str):
     tables = {
         'usuarios':{'id_usuario','correo','contraseña','nombres','apellidos','numero_telefonico','id_rol'},
         'estudiantes':{'id_estudiante','programa'},
-        'profesores':{'id_profesor','especialidad'}
+        'profesor':{'id_profesor'}
     }
     
 

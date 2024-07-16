@@ -102,12 +102,12 @@ def get_teachers():
 def get_classrooms():
     classrooms = get_all_classrooms(admin_bp.mysql)
     return jsonify(classrooms),200
-
+ 
 
 @admin_bp.route('/upload-and-register-users', methods=['POST'])
 @token_required
 @valid_login
-@valid_role('upload-and-register-users')
+# @valid_role('upload-and-register-users')
 def upload_and_register_users():
     if 'csvFile' not in request.files:
         return jsonify({'response': 'Se esperaba un archivo'}), 400
@@ -124,6 +124,7 @@ def upload_and_register_users():
     columns = valid_table(table)
 
     if columns == None:
+        print('1232')
         return jsonify({'response':'Columnas invalidas'}),400
 
     if not file or not file.filename.endswith('.csv'):
@@ -154,7 +155,7 @@ def upload_and_register_users():
             users_roles.append((row[0],row[-1]))
             del row[-1]
 
-        row[2] = encrypt(row[2])
+            row[2] = encrypt(row[2])
         users_list.append(tuple(row))
 
     res = insert_by_csv(admin_bp.mysql,users_list,table)
