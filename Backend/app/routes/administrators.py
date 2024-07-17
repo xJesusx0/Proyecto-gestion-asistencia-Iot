@@ -1,22 +1,24 @@
 import io
 import csv
 import json
+from datetime import datetime
 
-from flask import Blueprint
-from flask import request
-from flask import jsonify
-from flask import session
+from flask import Blueprint, request, jsonify, session
 
 from ..config import *
 
-from Database.administrators import *
+from Database import valid_table, TimedeltaEncoder
 from Database.encrypt import encrypt
-from Database import valid_table,TimedeltaEncoder
 from Database.auth import get_roles
+from Database.administrators import *
 from Database.students import get_groups_by_students_id
-from Database.teachers import get_groups_by_teachers_id,get_all_teachers
+from Database.teachers import get_groups_by_teachers_id, get_all_teachers
+from Database.groups import group_exists, insert_group, is_time_overlap
 
 admin_bp = Blueprint('admin',__name__,url_prefix='/admin')
+
+def format_time(time_str:str):
+    return datetime.strptime(time_str, '%H:%M').strftime('%H:%M:%S')
 
 def valid_csv(stream,table:set):
     stream.seek(0)
@@ -104,10 +106,64 @@ def get_classrooms():
     return jsonify(classrooms),200
  
 
+@admin_bp.route('add-group',methods = ['POST'])
+@token_required
+@valid_login
+@valid_role('add-group')
+def add_group():
+
+    request_body = request.get_json()
+    
+    if not request_body:
+        return jsonify({'error':'se esperaba un grupo'}),400
+
+    expected_keys = ['group-id', 'module', 'teacher', 'classroom', 'period', 'weekday', 'start-time', 'end-time']
+
+    for key in expected_keys:
+        if key not in request_body or not request_body[key]:
+            return jsonify({'error':f'Json invalido, se esperaba el campo {key}'}),400
+
+    try:
+        request_body['classroom'] = int(request_body.get('classroom'))
+    except:
+        return jsonify({'error':'Id de salon invalida'}),400
+
+    request_body['group-id'] = request_body.get('group-id', '').upper()
+    request_body['start-time'] = format_time(request_body['start-time'])
+    request_body['end-time'] = format_time(request_body['end-time'])
+
+    request_to_list = []
+
+    for key in expected_keys:
+        request_to_list.append(request_body.get(key))
+
+    request_to_tuple = tuple(request_to_list)
+
+    group = group_exists(admin_bp.mysql,request_body)
+    
+    if group != None:
+        group_json = json.dumps(group, cls=TimedeltaEncoder)
+        group_json = json.loads(group_json)
+        return jsonify({'error':'El grupo ya existe','info' : group_json }),409
+
+    overlap = is_time_overlap(admin_bp.mysql,request_body['classroom'],request_body['weekday'],request_body['start-time'],request_body['end-time'])
+    
+    if overlap != None:
+        overlap_json = json.dumps(overlap, cls=TimedeltaEncoder)
+        overlap_json = json.loads(overlap_json)
+        return(jsonify({'error':'Cruce de horarios','info':overlap_json})),409
+
+    res =  insert_group(admin_bp.mysql,request_to_tuple)
+
+    if res == 'ok':
+        return jsonify({'response':'Operacion realizada correctamente'}),200
+    
+    return jsonify({'error':f'Ha ocurrido un error: {res}'}),500
+
 @admin_bp.route('/upload-and-register-users', methods=['POST'])
 @token_required
 @valid_login
-# @valid_role('upload-and-register-users')
+@valid_role('upload-and-register-users')
 def upload_and_register_users():
     if 'csvFile' not in request.files:
         return jsonify({'response': 'Se esperaba un archivo'}), 400
