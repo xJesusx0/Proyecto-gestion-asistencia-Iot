@@ -119,5 +119,6 @@ CREATE TABLE justificaciones (
   id_justificacion INT PRIMARY KEY,
   ruta_archivo VARCHAR(255),
   id_inasistencia INT,
+  descripcion VARCHAR(255),
   FOREIGN KEY (id_inasistencia) REFERENCES inasistencia(id_inasistencia)
 );
