@@ -52,7 +52,6 @@
         </div>
     </nav>
     
-    <!-- Formulario para Crear Grupo -->
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-8">
@@ -73,6 +72,7 @@
                             <div class="mb-3">
                                 <label for="weekday" class="form-label">Día de la Semana</label>
                                 <select class="form-select" id="weekday" name="weekday">
+                                    <option disabled selected value="">Selecciona un dia</option>
                                     <option value="lunes">Lunes</option>
                                     <option value="martes">Martes</option>
                                     <option value="miércoles">Miércoles</option>
@@ -85,21 +85,25 @@
                             <div class="mb-3">
                                 <label for="teachers" class="form-label">Profesor</label>
                                 <select class="form-select" id="teachers" name="teachers">
+                                    <option disabled selected value="">Selecciona un profesor</option>
                                     <!-- Opciones generadas dinámicamente -->
                                 </select>
                             </div>
                             <div class="mb-3">
                                 <label for="modules" class="form-label">Módulo</label>
                                 <select class="form-select" id="modules" name="modules">
+                                    <option disabled selected value="">Selecciona un módulo</option>
                                     <!-- Opciones generadas dinámicamente -->
                                 </select>
                             </div>
                             <div class="mb-3">
                                 <label for="classrooms" class="form-label">Salón</label>
                                 <select class="form-select" id="classrooms" name="classrooms">
+                                    <option disabled selected value="">Selecciona un salón</option>
                                     <!-- Opciones generadas dinámicamente -->
                                 </select>
                             </div>
+                            
                             <div class="mb-3">
                                 <label for="start-time" class="form-label">Hora de Inicio</label>
                                 <input type="time" class="form-control" id="start-time" name="start-time">
