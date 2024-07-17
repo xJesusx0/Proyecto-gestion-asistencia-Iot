@@ -21,7 +21,8 @@ const request = async (method, url, data = null) => {
         return response.data;
     } catch (error) {
         if (error.response) {
-            throw new Error(`Error ${error.response.status}: ${error.response.data.message || error.response.statusText}`);
+            console.error(error.response.data)
+            throw new Error(`Error ${error.response.status}`);
         } else if (error.request) {
             throw new Error('No response received from server');
         } else {
